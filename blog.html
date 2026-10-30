@@ -1,4 +1,34 @@
-<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Yönlendiriliyor… | IF PARTNERS HUKUK</title>
-<meta name="robots" content="noindex"><link rel="canonical" href="https://ifhukuk.com/">
-<meta http-equiv="refresh" content="0; url=./"><script>location.replace("./")</script></head>
-<body><p><a href="./">IF PARTNERS HUKUK</a></p></body></html>
+---
+layout: default
+title: Blog
+description: IF PARTNERS HUKUK'tan hukuk, ceza, idare ve icra-iflas alanlarında bilgilendirici yazılar.
+---
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <h1>Yazılar</h1>
+    <p class="lead">Hukuki gelişmeler ve uygulamada sık karşılaşılan konular üzerine bilgilendirici yazılar.</p>
+  </div>
+</header>
+<section class="block tone-sage blog-index">
+  <div class="wrap">
+    {% assign cats = site.posts | map: "category" | uniq | compact %}
+    {% if cats.size > 1 %}<div class="cat-row" role="group" aria-label="Kategoriye göre süz">
+      <button class="chip" aria-pressed="true" data-cat="">Tümü</button>
+      {% for c in cats %}<button class="chip" aria-pressed="false" data-cat="{{ c }}">{{ c }}</button>{% endfor %}
+    </div>{% endif %}
+    {% if site.posts.size > 0 %}
+    <div class="post-list">
+      {% for post in site.posts %}<div data-cat="{{ post.category }}">{% include post-card.html post=post %}</div>{% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-note">Yakında burada yazılarımızı paylaşacağız.</p>
+    {% endif %}
+  </div>
+</section>
+<script>
+document.querySelectorAll('.cat-row .chip').forEach(function(b){b.addEventListener('click',function(){
+  var c=b.dataset.cat;document.querySelectorAll('.cat-row .chip').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  document.querySelectorAll('.post-list [data-cat]').forEach(function(p){p.hidden=c&&p.dataset.cat!==c});
+})});
+</script>

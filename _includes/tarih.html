@@ -1,0 +1,1 @@
+{% assign aylar = "Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık" | split: "," %}{% assign ay = include.date | date: "%-m" | minus: 1 %}{{ include.date | date: "%-d" }} {{ aylar[ay] }} {{ include.date | date: "%Y" }}

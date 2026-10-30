@@ -1,6 +1,11 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://ifhukuk.com/</loc></url>
-<url><loc>https://ifhukuk.com/kvkk.html</loc></url>
-<url><loc>https://ifhukuk.com/cerez-politikasi.html</loc></url>
+<url><loc>{{ site.url }}/</loc></url>
+<url><loc>{{ site.url }}/blog.html</loc></url>
+{% for post in site.posts %}<url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod></url>
+{% endfor %}<url><loc>{{ site.url }}/kvkk.html</loc></url>
+<url><loc>{{ site.url }}/cerez-politikasi.html</loc></url>
 </urlset>

@@ -1,0 +1,6 @@
+<a class="post-card" href="{{ include.post.url | relative_url }}">
+  <span class="pc-meta">{% if include.post.category %}<b>{{ include.post.category }}</b>{% endif %}<time datetime="{{ include.post.date | date: '%Y-%m-%d' }}">{% include tarih.html date=include.post.date %}</time></span>
+  <span class="pc-title">{{ include.post.title }}</span>
+  <span class="pc-ex">{{ include.post.description | default: include.post.excerpt | strip_html | truncate: 170 }}</span>
+  <span class="pc-more">Yazıyı oku →</span>
+</a>
