@@ -1,11 +1,10 @@
----
-layout: default
----
+{% extends "base.html" %}
+{% block content %}
 <header class="page-hero">
   <div class="wrap">
-    <p class="eyebrow"><a href="{{ '/' | relative_url }}#calisma-alanlari">Çalışma alanları</a></p>
-    <h1>{{ page.title }}</h1>
-    <p class="lead">{{ page.short }}</p>
+    <p class="eyebrow"><a href="{{ root }}#calisma-alanlari">Çalışma alanları</a></p>
+    <h1>{{ a.title }}</h1>
+    <p class="lead">{{ a.short }}</p>
   </div>
 </header>
 
@@ -13,33 +12,33 @@ layout: default
   <div class="wrap alan-grid">
     <div class="prose">
       <h2 class="first">Hangi konularda çalışıyoruz</h2>
-      <ul class="scope">{% for t in page.topics %}<li>{{ t }}</li>{% endfor %}</ul>
-      {{ content }}
+      <ul class="scope">{% for t in a.topics %}<li>{{ t }}</li>{% endfor %}</ul>
+      {{ a.html|safe }}
     </div>
     <aside class="alan-aside">
       <div>
         <p class="aside-label">Başlıca merciler</p>
-        <ul>{% for m in page.forum %}<li>{{ m }}</li>{% endfor %}</ul>
+        <ul>{% for m in a.forum %}<li>{{ m }}</li>{% endfor %}</ul>
       </div>
       <div>
         <p class="aside-label">Görüşme</p>
         <p>Dosyanızı ön görüşmede birlikte değerlendirelim.</p>
-        <p><a class="btn solid" href="{{ '/' | relative_url }}#iletisim">İletişime geçin</a></p>
+        <p><a class="btn solid" href="{{ root }}#iletisim">İletişime geçin</a></p>
         <p class="aside-phone"><a href="tel:{{ site.phone }}">{{ site.phone_display }}</a></p>
       </div>
     </aside>
   </div>
 </section>
 
-<section class="block tone-forest" id="surec">
+<section class="block tone-forest">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Süreç</p>
       <h2>Dosyanız nasıl yürütülür</h2>
-      <p>{{ page.title }} dosyalarında izlediğimiz başlıca adımlar.</p>
+      <p>{{ a.title }} dosyalarında izlediğimiz başlıca adımlar.</p>
     </div>
-    <ol class="steps steps-{{ page.steps.size }}">
-      {% for s in page.steps %}<li><b>{{ s.b }}</b><span>{{ s.t }}</span></li>{% endfor %}
+    <ol class="steps steps-{{ a.steps|length }}">
+      {% for s in a.steps %}<li><b>{{ s.b }}</b><span>{{ s.t }}</span></li>{% endfor %}
     </ol>
   </div>
 </section>
@@ -48,7 +47,8 @@ layout: default
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Diğer alanlar</p><h2>Çalışma alanlarımız</h2></div>
     <ul class="alan-links">
-      {% assign alanlar = site.alanlar | sort: "order" %}{% for a in alanlar %}{% unless a.url == page.url %}<li><a href="{{ a.url | relative_url }}">{{ a.title }} <span aria-hidden="true">→</span></a></li>{% endunless %}{% endfor %}
+      {% for x in alanlar if x.slug != a.slug %}<li><a href="{{ root }}calisma-alanlari/{{ x.slug }}/">{{ x.title }} <span aria-hidden="true">→</span></a></li>{% endfor %}
     </ul>
   </div>
 </section>
+{% endblock %}

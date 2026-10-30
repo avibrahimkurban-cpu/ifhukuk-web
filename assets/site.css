@@ -1,22 +1,22 @@
 /* IF PARTNERS HUKUK — site stilleri
-   Düzen: koyu lacivert-grafit üst bant ve açılış; bölümler sıcak açık gri tonlar ve koyu bantlar arasında
+   Düzen: sıcak antrasit üst bant ve açılış; bölümler sıcak açık gri tonlar ve koyu bantlar arasında
    dönüşümlü ilerler. Çalışma alanları dilekçe başlığı gibi "alan — görevli merciler" satırlarıyla listelenir. */
 :root{
-  --deep:#161C26;      /* üst bant, açılış, iletişim: lacivert-grafit */
-  --forest:#1E2532;    /* süreç bandı */
-  --foot:#0F131A;      /* alt bilgi */
-  --stone:#F2F1EE;     /* açık bölümler: sıcak açık gri */
-  --sage:#E6E4DF;      /* ara bölümler */
-  --card:#FBFBF9;      /* kart ve etiket zemini */
-  --ink:#181B21;
-  --ink-2:#3B3F47;
-  --muted:#636771;
-  --line:#D4D1CA;
-  --accent:#7A2E34;    /* bordo */
-  --brass:#C6AE80;     /* koyu zeminde ince vurgu */
-  --on-dark:#EEF0F3;
-  --on-dark-2:#AEB4BE;
-  --on-dark-line:rgba(238,240,243,.16);
+  --deep:#23201E;      /* üst bant, açılış, iletişim: sıcak antrasit */
+  --forest:#2D2926;    /* süreç bandı */
+  --foot:#1A1816;      /* alt bilgi */
+  --stone:#F3F1ED;     /* açık bölümler */
+  --sage:#E8E4DD;      /* ara bölümler */
+  --card:#FBFAF8;      /* kart ve etiket zemini */
+  --ink:#1D1B19;
+  --ink-2:#3E3A36;
+  --muted:#6A645D;
+  --line:#D6D0C6;
+  --accent:#7D2B35;    /* bordo */
+  --brass:#C4A574;     /* koyu zeminde ince vurgu */
+  --on-dark:#F1EEE9;
+  --on-dark-2:#B7AFA5;
+  --on-dark-line:rgba(241,238,233,.15);
   --serif:"Spectral",Georgia,"Times New Roman",serif;
   --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --max:1160px;
@@ -47,7 +47,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--deep);color:var(--on-dark);border-bottom:1px solid var(--on-dark-line)}
 .head-row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
 .brand{display:flex;align-items:center;text-decoration:none}
-.brand img{height:44px;width:auto}
+.brand img{height:34px;width:auto}
 .nav{display:flex;gap:28px;align-items:center}
 .nav a{text-decoration:none;font-size:.94rem;color:var(--on-dark-2)}
 .nav a:hover,.nav a[aria-current]{color:var(--on-dark)}
@@ -66,12 +66,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
   .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
   .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-  .brand img{height:38px}
+  .brand img{height:30px}
 }
 
 /* açılış */
 .hero{padding-block:clamp(56px,10vw,128px) clamp(40px,6vw,72px);position:relative;overflow:hidden}
-.hero::after{content:"§";position:absolute;right:-.06em;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:clamp(18rem,42vw,40rem);line-height:1;color:rgba(238,240,243,.04);pointer-events:none}
+.hero::after{content:"§";position:absolute;right:-.06em;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:clamp(18rem,42vw,40rem);line-height:1;color:rgba(241,238,233,.04);pointer-events:none}
 .hero .wrap{position:relative;z-index:1}
 .eyebrow{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 22px}
 .eyebrow a{text-decoration:none}
@@ -149,7 +149,7 @@ section.block{padding-block:clamp(56px,8vw,104px)}
 .post-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px)}
 .post-list > div{display:flex}
 .post-card{display:flex;flex-direction:column;gap:12px;background:var(--card);padding:26px 24px 22px;text-decoration:none;border-top:3px solid var(--accent);width:100%;transition:transform .15s,box-shadow .15s}
-.post-card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(22,28,38,.12)}
+.post-card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(35,32,30,.12)}
 .pc-meta{display:flex;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
 .pc-meta b{color:var(--accent);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.7rem;align-self:center}
 .pc-title{font-family:var(--serif);font-size:1.4rem;line-height:1.2;font-weight:500}
@@ -198,7 +198,7 @@ section.block{padding-block:clamp(56px,8vw,104px)}
 .contact-grid div{padding:22px 24px 0 0;min-width:0}
 .contact-grid dt{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-2)}
 .contact-grid dd{margin:10px 0 0;font-size:1.08rem;overflow-wrap:anywhere}
-.contact-grid a{text-decoration:none;border-bottom:1px solid rgba(198,174,128,.5)}
+.contact-grid a{text-decoration:none;border-bottom:1px solid rgba(196,165,116,.5)}
 .contact-grid a:hover{border-bottom-color:var(--brass)}
 .contact .btn{margin-top:40px}
 @media (max-width:760px){.contact-grid{grid-template-columns:1fr}}
@@ -206,7 +206,7 @@ section.block{padding-block:clamp(56px,8vw,104px)}
 /* alt bilgi */
 .site-foot{background:var(--foot);color:var(--on-dark-2);padding-block:48px calc(36px + env(safe-area-inset-bottom,0px));font-size:.88rem}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--on-dark-line);margin-bottom:22px}
-.foot-top img{height:40px;width:auto}
+.foot-top img{height:30px;width:auto}
 .foot-top dl{display:flex;gap:16px 40px;flex-wrap:wrap;margin:0}
 .foot-top dt{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
 .foot-top dd{margin:4px 0 0;color:var(--on-dark);font-size:.95rem}
@@ -217,7 +217,7 @@ section.block{padding-block:clamp(56px,8vw,104px)}
 .foot-row a:hover{color:var(--on-dark)}
 .notice{margin-top:18px;font-size:.8rem;max-width:90ch}
 
-.wa{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--brass);color:var(--deep);text-decoration:none;font-size:.9rem;font-weight:600;padding:12px 16px;display:flex;gap:8px;align-items:center;box-shadow:0 6px 24px rgba(15,19,26,.35)}
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--brass);color:var(--deep);text-decoration:none;font-size:.9rem;font-weight:600;padding:12px 16px;display:flex;gap:8px;align-items:center;box-shadow:0 6px 24px rgba(26,24,22,.35)}
 .wa:hover{background:var(--on-dark)}
 .wa svg{width:18px;height:18px;fill:currentColor}
 @media print{.site-head,.wa,.menu-btn{display:none}}
@@ -254,3 +254,16 @@ a.area:hover h3{color:var(--accent)}
 .alan-links a:hover{color:var(--accent)}
 @media (max-width:900px){.alan-grid{grid-template-columns:1fr}.alan-aside{position:static}.alan-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.scope,.alan-links{grid-template-columns:1fr}}
+
+/* sosyal bağlantılar */
+.social{display:inline-flex;gap:10px;align-items:center}
+.social a{display:inline-grid;place-items:center;width:34px;height:34px;border:1px solid var(--on-dark-line);color:var(--on-dark-2);text-decoration:none;transition:color .15s,border-color .15s,background .15s}
+.social a:hover{color:var(--deep);background:var(--brass);border-color:var(--brass)}
+.social svg{width:16px;height:16px;fill:currentColor}
+.nav .social{margin-left:4px}
+.nav .social a{padding:0;width:34px;border-bottom:1px solid var(--on-dark-line)}
+@media (max-width:860px){.nav .social{margin:14px 0 0}.nav .social a{width:40px;height:40px}}
+.foot-row .social a{width:32px;height:32px}
+.contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+.contact-actions .btn{margin-top:0}
+.foot-top dd a{border-bottom:0}

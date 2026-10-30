@@ -1,0 +1,21 @@
+# IF PARTNERS HUKUK — site bilgileri. Değişiklikten sonra: python3 build.py
+title: IF PARTNERS HUKUK
+description: Kadıköy/İstanbul'da ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında dava takibi ve danışmanlık hizmeti veren avukatlık bürosu.
+url: https://ifhukuk.com
+# Sitenin yayınlandığı klasör. Önizleme: /ifhukuk-web/   ifhukuk.com'a geçince: /
+base_path: /ifhukuk-web/
+
+# Logo dosyaları depoya eklenince assets/ yolları kullanılacak.
+logo_light: https://ifhukuk.com/assets/img/white@4x.png
+logo_dark: https://ifhukuk.com/assets/img/black@4x.png
+
+phone: "+905380408272"
+phone_display: "+90 538 040 82 72"
+phone_local: "0538 040 82 72"
+email: info@ifhukuk.com
+whatsapp: https://wa.me/905380408272
+linkedin: ""   # LinkedIn sayfa adresi buraya
+address: "Uzunçayır Cad. No:43 D1 Blok D:26 Kadıköy/İstanbul"
+address_short: "Uzunçayır Cad. No:43, Kadıköy"
+maps: https://www.google.com/maps/search/?api=1&query=Uzun%C3%A7ay%C4%B1r+Cad.+No%3A43+Kad%C4%B1k%C3%B6y+%C4%B0stanbul
+hours: Pzt–Cum 08.00–17.00

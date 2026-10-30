@@ -1,12 +1,15 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>{{ site.url }}/</loc></url>
-{% for a in site.alanlar %}<url><loc>{{ site.url }}{{ a.url }}</loc></url>
-{% endfor %}<url><loc>{{ site.url }}/blog.html</loc></url>
-{% for post in site.posts %}<url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod></url>
-{% endfor %}<url><loc>{{ site.url }}/kvkk.html</loc></url>
-<url><loc>{{ site.url }}/cerez-politikasi.html</loc></url>
+<url><loc>https://ifhukuk.com/</loc></url>
+<url><loc>https://ifhukuk.com/blog.html</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/ceza-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/sirketler-ve-ticaret-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/icra-ve-iflas-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/gayrimenkul-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/yabancilar-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/sigorta-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/calisma-alanlari/saglik-hukuku/</loc></url>
+<url><loc>https://ifhukuk.com/blog/adli-tatil-ve-surelere-etkisi/</loc></url>
+<url><loc>https://ifhukuk.com/kvkk.html</loc></url>
+<url><loc>https://ifhukuk.com/cerez-politikasi.html</loc></url>
 </urlset>

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block head %}<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"{{ site.title }}","url":"{{ site.url }}/","telephone":"{{ site.phone }}","email":"{{ site.email }}",
+"address":{"@type":"PostalAddress","streetAddress":"Uzunçayır Cad. No:43 D1 Blok D:26","addressLocality":"Kadıköy","addressRegion":"İstanbul","addressCountry":"TR"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],"areaServed":"TR","knowsLanguage":["tr","en","ug","uz"]{% if site.linkedin %},"sameAs":["{{ site.linkedin }}"]{% endif %}}
+</script>{% endblock %}
+{% block content %}
+<section class="hero tone-deep">
+  <div class="wrap">
+    <p class="eyebrow">Kadıköy · İstanbul</p>
+    <h1>Hukuki süreçleriniz, <em>süresinde</em> ve özenle.</h1>
+    <p class="lead">IF PARTNERS HUKUK; bireylere ve şirketlere ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında dava takibi ve hukuki danışmanlık hizmeti veren bir avukatlık bürosudur.</p>
+    <div class="hero-actions">
+      <a class="btn solid" href="#iletisim">Görüşme talep edin</a>
+      <a class="btn" href="#calisma-alanlari">Çalışma alanları</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Baro</dt><dd>İstanbul Barosu</dd></div>
+      <div><dt>Adres</dt><dd><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ site.address_short }}</a></dd></div>
+      <div><dt>Çalışma saatleri</dt><dd>{{ site.hours }}</dd></div>
+      <div><dt>Telefon</dt><dd><a href="tel:{{ site.phone }}">{{ site.phone_local }}</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="block tone-stone" id="hakkimizda">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">Büromuz</p>
+      <h2 class="sec-title">Hakkımızda</h2>
+    </div>
+    <div class="body">
+      <p>Her dosyayı, müvekkilin durumunu dinleyerek ve hukuki seçenekleri açıkça ortaya koyarak ele alıyoruz.</p>
+      <p>IF PARTNERS HUKUK, Kadıköy'de faaliyet gösteren bir avukatlık bürosudur. Dava ve takip süreçlerinde süreleri yakından izliyor, müvekkillerimizi dosyalarındaki her önemli gelişmeden haberdar ediyoruz. Uyuşmazlık doğmadan önce sözleşme ve danışmanlık desteğiyle riskleri azaltmaya, uyuşmazlık doğduğunda ise dosyayı baştan sona titizlikle yürütmeye çalışıyoruz.</p>
+      <ul class="principles">
+        <li><b>Açık iletişim</b><span>Dosyanın durumu, riskleri ve olası sonuçları anlaşılır bir dille paylaşılır.</span></li>
+        <li><b>Süre takibi</b><span>Kanuni süreler ve duruşma tarihleri büro içinde ayrı ayrı izlenir.</span></li>
+        <li><b>Gizlilik</b><span>Müvekkil bilgileri avukatlık meslek kuralları ve KVKK kapsamında korunur.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block tone-sage" id="calisma-alanlari">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Çalışma alanları</p>
+      <h2>Çalışma alanlarımız</h2>
+      <p>Her alanın sayfasında; hangi konularda çalıştığımızı, dosyaların nasıl yürütüldüğünü ve bilmeniz gereken temel noktaları bulabilirsiniz.</p>
+    </div>
+    <div class="areas">
+      {% for a in alanlar %}
+      <a class="area" href="{{ root }}calisma-alanlari/{{ a.slug }}/">
+        <div><h3>{{ a.title }}</h3><span class="forum"><b>Merciler</b>{{ a.forum[:4]|join(' · ') }}</span></div>
+        <div><p>{{ a.short }}</p>
+          <ul class="topics">{% for t in a.topics[:4] %}<li>{{ t }}</li>{% endfor %}</ul>
+          <span class="area-more">Ayrıntılar ve süreç →</span></div>
+      </a>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block tone-forest" id="surec">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Çalışma biçimi</p>
+      <h2>Bir dosya bizde nasıl ilerler</h2>
+      <p>İlk görüşmeden dosyanın sonuçlanmasına kadar her aşamada ne olacağını önceden bilirsiniz.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Ön görüşme</b><span>Durumunuzu ve elinizdeki belgeleri yüz yüze ya da çevrim içi görüşmede dinleriz.</span></li>
+      <li><b>Hukuki değerlendirme</b><span>Seçenekleri, süreleri, masrafları ve riskleri yazılı olarak paylaşırız.</span></li>
+      <li><b>Vekalet ve sözleşme</b><span>Kapsam ve ücret avukatlık sözleşmesiyle açıkça belirlenir.</span></li>
+      <li><b>Takip ve bilgilendirme</b><span>Duruşma, tebligat ve karar gibi her önemli gelişmeyi size iletiriz.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block tone-stone" id="ekibimiz">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Avukatlarımız</p>
+      <h2>Ekibimiz</h2>
+      <p>Dosyalarınız, büromuzun avukatları tarafından doğrudan ve birebir takip edilir.</p>
+    </div>
+    <div class="team">
+      <article class="person"><div class="ph" aria-hidden="true"><span>İK</span></div>
+        <h3>Av. İbrahim Kurban</h3><p class="role">Kurucu Avukat</p>
+        <p class="bio">İstanbul Şehir Üniversitesi Hukuk Fakültesi'nden mezun olmuş, Bahçeşehir Üniversitesi'nde Bilişim Hukuku alanında yüksek lisansını tamamlamıştır. Yedi yılı aşkın süredir ağırlıklı olarak ceza hukuku ve şirketler hukuku dosyalarında çalışmaktadır. Dosyalarını baştan sona müvekkilleriyle birebir iletişim içinde yürütür. Bilişim hukuku alanındaki akademik birikimi, bilişim suçları ve kişisel verilere ilişkin dosyalarda büroya ayrı bir bakış açısı kazandırmaktadır.</p>
+        <p class="langs"><b>Diller</b>Türkçe · İngilizce · Uygurca · Özbekçe</p>
+        <p class="bar">İstanbul Barosu</p></article>
+      <article class="person"><div class="ph" aria-hidden="true"><span>FÖ</span></div>
+        <h3>Av. Fırat Talha Özdemir</h3><p class="role">Kurucu Avukat</p>
+        <p class="bio">İstanbul Şehir Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Yedi yılı aşkın meslek hayatı boyunca sağlık hukuku, iş hukuku, icra ve iflas hukuku ile ticaret hukuku alanlarında uzun süre yoğun olarak çalışmıştır. Sağlık kuruluşları ve ticari işletmelerle yürüttüğü çalışmalarda edindiği deneyimle, dosyaların hem hukuki hem de uygulamadaki boyutunu birlikte ele alır.</p>
+        <p class="langs"><b>Diller</b>Türkçe · İngilizce</p>
+        <p class="bar">İstanbul Barosu</p></article>
+      <article class="person"><div class="ph" aria-hidden="true"><span>HM</span></div>
+        <h3>Stj. Av. Harun Enes Maden</h3><p class="role">Stajyer Avukat</p>
+        <p class="bio">İstanbul Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Avukatlık stajını büromuzda sürdürmekte; dosyaların hazırlanması, takibi ve araştırma süreçlerinde ekibe destek vermektedir.</p>
+        <p class="bar">İstanbul Barosu</p></article>
+    </div>
+  </div>
+</section>
+
+{% if posts %}
+<section class="block tone-sage" id="yazilar">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Blog</p>
+      <h2>Son yazılar</h2>
+      <p>Hukuki gelişmeler ve sık karşılaşılan konular üzerine bilgilendirici yazılar. <a href="{{ root }}blog.html">Tüm yazılar →</a></p>
+    </div>
+    <div class="post-list">
+      {% for p in posts[:3] %}{% include "card.html" %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="block tone-stone" id="sss">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Sık sorulanlar</p>
+      <h2>Merak edilenler</h2>
+      <p>Büromuza en sık yöneltilen soruların kısa yanıtları.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Ön görüşme nasıl yapılıyor?</summary><p>Görüşmeyi telefonla, e-postayla ya da WhatsApp üzerinden planlayabilirsiniz. Görüşme büromuzda yüz yüze ya da görüntülü olarak yapılabilir. Ön görüşmenin koşullarını randevu sırasında öğrenebilirsiniz.</p></details>
+      <details><summary>Avukatlık ücreti nasıl belirleniyor?</summary><p>Ücret; işin niteliği, kapsamı ve gerektirdiği emek dikkate alınarak, Türkiye Barolar Birliği Avukatlık Asgari Ücret Tarifesi'nin altında olmamak üzere avukatlık sözleşmesiyle belirlenir. Harç, bilirkişi ve tebligat gibi yargılama giderleri ücretten ayrıdır.</p></details>
+      <details><summary>Davam ne kadar sürer?</summary><p>Süre; davanın türüne, görüldüğü mahkemenin iş yüküne, bilirkişi incelemesi gerekip gerekmediğine ve kanun yollarına başvurulup başvurulmadığına göre değişir. Ön değerlendirmede dosyanız için beklenen aşamaları ve tahmini süreyi paylaşırız.</p></details>
+      <details><summary>Paylaştığım bilgiler gizli kalır mı?</summary><p>Evet. Avukatlar, Avukatlık Kanunu uyarınca mesleki sır saklama yükümlülüğü altındadır. Kişisel verileriniz ayrıca 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında işlenir ve korunur.</p></details>
+      <details><summary>İstanbul dışındaki dosyaları takip ediyor musunuz?</summary><p>UYAP üzerinden yürütülebilen işlemler ve gerektiğinde yerinde takip ile İstanbul dışındaki dosyalarda da hizmet verebiliyoruz. Dosyanın durumuna göre birlikte değerlendiririz.</p></details>
+      <details><summary>Yabancı dilde görüşme yapabilir miyim?</summary><p>Evet. Türkçenin yanı sıra İngilizce, Uygurca ve Özbekçe dillerinde de görüşme yapabiliyoruz.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact tone-deep" id="iletisim">
+  <div class="wrap">
+    <p class="eyebrow">İletişim</p>
+    <h2>Dosyanızı birlikte değerlendirelim.</h2>
+    <dl class="contact-grid">
+      <div><dt>Telefon · WhatsApp</dt><dd><a href="tel:{{ site.phone }}">{{ site.phone_display }}</a></dd></div>
+      <div><dt>E-posta</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+      <div><dt>Adres</dt><dd><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ site.address }}</a></dd></div>
+    </dl>
+    <div class="contact-actions">
+      <a class="btn" href="{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+      {% if site.linkedin %}<a class="btn" href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

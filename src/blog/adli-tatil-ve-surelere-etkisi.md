@@ -1,5 +1,5 @@
 ---
-layout: post
+date: 2026-10-30
 title: "Adli Tatil ve Sürelere Etkisi"
 category: Usul Hukuku
 author: IF PARTNERS HUKUK
