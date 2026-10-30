@@ -1,13 +1,13 @@
 ---
 layout: default
 title: IF PARTNERS HUKUK
-description: IF PARTNERS HUKUK, Kadıköy/İstanbul'da hukuk, ceza, idare ve icra-iflas alanlarında dava takibi ve hukuki danışmanlık hizmeti veren avukatlık bürosudur.
+description: IF PARTNERS HUKUK, Kadıköy/İstanbul'da ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında dava takibi ve danışmanlık hizmeti veren avukatlık bürosudur.
 ---
 <section class="hero tone-deep">
   <div class="wrap">
     <p class="eyebrow">Kadıköy · İstanbul</p>
     <h1>Hukuki süreçleriniz, <em>süresinde</em> ve özenle.</h1>
-    <p class="lead">IF PARTNERS HUKUK; bireylere ve şirketlere hukuk, ceza, idare ve icra-iflas alanlarında dava takibi ve hukuki danışmanlık hizmeti veren bir avukatlık bürosudur.</p>
+    <p class="lead">IF PARTNERS HUKUK; bireylere ve şirketlere ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında dava takibi ve hukuki danışmanlık hizmeti veren bir avukatlık bürosudur.</p>
     <div class="hero-actions">
       <a class="btn solid" href="#iletisim">Görüşme talep edin</a>
       <a class="btn" href="#calisma-alanlari">Çalışma alanları</a>
@@ -43,30 +43,17 @@ description: IF PARTNERS HUKUK, Kadıköy/İstanbul'da hukuk, ceza, idare ve icr
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Çalışma alanları</p>
-      <h2>Hukuk, ceza, idare ve icra</h2>
-      <p>Dört ana alanda dava takibi ve danışmanlık hizmeti veriyoruz. Her alanın yanında, dosyaların görüldüğü başlıca yargı mercileri yer alıyor.</p>
+      <h2>Çalışma alanlarımız</h2>
+      <p>Her alanın sayfasında; hangi konularda çalıştığımızı, dosyaların nasıl yürütüldüğünü ve bilmeniz gereken temel noktaları bulabilirsiniz.</p>
     </div>
     <div class="areas">
-      <article class="area" id="hukuk">
-        <div><h3>Özel Hukuk</h3><span class="forum"><b>Merciler</b>Asliye Hukuk · Sulh Hukuk · Aile · İş · Asliye Ticaret · Tüketici</span></div>
-        <div><p>Şirketler hukuku ve ticari sözleşmeler, gayrimenkul uyuşmazlıkları, aile ve miras hukuku ile iş hukukundan doğan davaların takibi; dava öncesi danışmanlık ve arabuluculuk süreçleri.</p>
-          <ul class="topics"><li>Şirketler ve ticaret hukuku</li><li>Sözleşmeler</li><li>Gayrimenkul</li><li>Aile hukuku</li><li>Miras hukuku</li><li>İş hukuku</li><li>Tüketici hukuku</li></ul></div>
-      </article>
-      <article class="area" id="ceza">
-        <div><h3>Ceza Hukuku</h3><span class="forum"><b>Merciler</b>Cumhuriyet Başsavcılığı · Sulh Ceza Hâkimliği · Asliye Ceza · Ağır Ceza</span></div>
-        <div><p>Soruşturma aşamasında ifade ve sorgu süreçlerinde müdafilik, kovuşturma aşamasında sanık müdafiliği ve katılan vekilliği; tutukluluk ve diğer koruma tedbirlerine itiraz, istinaf ve temyiz kanun yolları.</p>
-          <ul class="topics"><li>Soruşturma süreci</li><li>Müdafilik</li><li>Katılan vekilliği</li><li>Tutukluluğa itiraz</li><li>Kanun yolları</li></ul></div>
-      </article>
-      <article class="area" id="idare">
-        <div><h3>İdare Hukuku</h3><span class="forum"><b>Merciler</b>İdare Mahkemeleri · Vergi Mahkemeleri · Bölge İdare Mahkemeleri · Danıştay</span></div>
-        <div><p>İdari işlemlere karşı iptal ve tam yargı davaları, kamu personeli ve disiplin uyuşmazlıkları, eğitim hukuku, imar ve ruhsat işlemleri; idareye başvuru ve itiraz süreçleri.</p>
-          <ul class="topics"><li>İptal davaları</li><li>Tam yargı davaları</li><li>Kamu personeli</li><li>Eğitim hukuku</li><li>İmar ve ruhsat</li></ul></div>
-      </article>
-      <article class="area" id="icra">
-        <div><h3>İcra ve İflas Hukuku</h3><span class="forum"><b>Merciler</b>İcra Daireleri · İcra Hukuk · İcra Ceza · Asliye Ticaret (iflas)</span></div>
-        <div><p>İlamlı ve ilamsız icra takipleri, alacak tahsili, itirazın iptali ve menfi tespit davaları, haciz ve satış işlemleri, iflas ve konkordato süreçlerinde alacaklı ve borçlu vekilliği.</p>
-          <ul class="topics"><li>Alacak takibi</li><li>İtirazın iptali</li><li>Menfi tespit</li><li>Haciz ve satış</li><li>İflas ve konkordato</li></ul></div>
-      </article>
+      {% assign alanlar = site.alanlar | sort: "order" %}{% for a in alanlar %}
+      <a class="area" href="{{ a.url | relative_url }}">
+        <div><h3>{{ a.title }}</h3><span class="forum"><b>Merciler</b>{{ a.forum | slice: 0, 4 | join: " · " }}</span></div>
+        <div><p>{{ a.short }}</p>
+          <ul class="topics">{% for t in a.topics limit:4 %}<li>{{ t }}</li>{% endfor %}</ul>
+          <span class="area-more">Ayrıntılar ve süreç →</span></div>
+      </a>{% endfor %}
     </div>
   </div>
 </section>
@@ -92,12 +79,23 @@ description: IF PARTNERS HUKUK, Kadıköy/İstanbul'da hukuk, ceza, idare ve icr
     <div class="sec-head">
       <p class="eyebrow">Ekip</p>
       <h2>Avukatlarımız</h2>
-      <p>Dosyalarınız, büromuzun avukatları tarafından doğrudan takip edilir.</p>
+      <p>Dosyalarınız, büromuzun avukatları tarafından doğrudan ve birebir takip edilir.</p>
     </div>
     <div class="team">
-      <article class="person"><div class="ph" aria-hidden="true"><span>İK</span></div><h3>Av. İbrahim Kurban</h3><p class="role">Kurucu Avukat</p><p class="bar">İstanbul Barosu</p></article>
-      <article class="person"><div class="ph" aria-hidden="true"><span>FÖ</span></div><h3>Av. Fırat Talha Özdemir</h3><p class="role">Kurucu Avukat</p><p class="bar">İstanbul Barosu</p></article>
-      <article class="person"><div class="ph" aria-hidden="true"><span>HM</span></div><h3>Av. Harun Enes Maden</h3><p class="role">Avukat</p><p class="bar">İstanbul Barosu</p></article>
+      <article class="person"><div class="ph" aria-hidden="true"><span>İK</span></div>
+        <h3>Av. İbrahim Kurban</h3><p class="role">Kurucu Avukat</p>
+        <p class="bio">İstanbul Şehir Üniversitesi Hukuk Fakültesi'nden mezun olmuş, Bahçeşehir Üniversitesi'nde Bilişim Hukuku alanında yüksek lisansını tamamlamıştır. Yedi yılı aşkın süredir ağırlıklı olarak ceza hukuku ve şirketler hukuku dosyalarında çalışmaktadır. Dosyalarını baştan sona müvekkilleriyle birebir iletişim içinde yürütür. Bilişim hukuku alanındaki akademik birikimi, bilişim suçları ve kişisel verilere ilişkin dosyalarda büroya ayrı bir bakış açısı kazandırmaktadır.</p>
+        <p class="langs"><b>Diller</b>Türkçe · İngilizce · Uygurca · Özbekçe</p>
+        <p class="bar">İstanbul Barosu</p></article>
+      <article class="person"><div class="ph" aria-hidden="true"><span>FÖ</span></div>
+        <h3>Av. Fırat Talha Özdemir</h3><p class="role">Kurucu Avukat</p>
+        <p class="bio">İstanbul Şehir Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Yedi yılı aşkın meslek hayatı boyunca sağlık hukuku, iş hukuku, icra ve iflas hukuku ile ticaret hukuku alanlarında uzun süre yoğun olarak çalışmıştır. Sağlık kuruluşları ve ticari işletmelerle yürüttüğü çalışmalarda edindiği deneyimle, dosyaların hem hukuki hem de uygulamadaki boyutunu birlikte ele alır.</p>
+        <p class="langs"><b>Diller</b>Türkçe · İngilizce</p>
+        <p class="bar">İstanbul Barosu</p></article>
+      <article class="person"><div class="ph" aria-hidden="true"><span>HM</span></div>
+        <h3>Stj. Av. Harun Enes Maden</h3><p class="role">Stajyer Avukat</p>
+        <p class="bio">İstanbul Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Avukatlık stajını büromuzda sürdürmekte; dosyaların hazırlanması, takibi ve araştırma süreçlerinde ekibe destek vermektedir.</p>
+        <p class="bar">İstanbul Barosu</p></article>
     </div>
   </div>
 </section>

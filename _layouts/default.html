@@ -6,7 +6,7 @@
 {% if page.title and page.url != "/" %}<title>{{ page.title }} | {{ site.title }}</title>{% else %}<title>{{ site.title }} | Kadıköy, İstanbul Avukatlık Bürosu</title>{% endif %}
 <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
 <link rel="canonical" href="{{ page.url | absolute_url | replace: site.baseurl, '' }}">
-<meta name="theme-color" content="#13211E">
+<meta name="theme-color" content="#161C26">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="{{ site.title }}">

@@ -1,6 +1,6 @@
 # IF PARTNERS HUKUK — site ayarları (GitHub Pages / Jekyll)
 title: IF PARTNERS HUKUK
-description: Kadıköy/İstanbul'da hukuk, ceza, idare ve icra-iflas alanlarında dava takibi ve hukuki danışmanlık hizmeti veren avukatlık bürosu.
+description: Kadıköy/İstanbul'da ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında dava takibi ve danışmanlık hizmeti veren avukatlık bürosu.
 lang: tr
 url: "https://ifhukuk.com"
 # Önizleme adresi (avibrahimkurban-cpu.github.io/ifhukuk-web) için. ifhukuk.com'a geçerken "" yapılacak.
@@ -17,3 +17,8 @@ email: info@ifhukuk.com
 permalink: /blog/:title/
 markdown: kramdown
 exclude: [README.md]
+
+collections:
+  alanlar:
+    output: true
+    permalink: /calisma-alanlari/:name/
