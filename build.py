@@ -40,7 +40,7 @@ def write(rel, html):
 
 def render(tpl, rel, **ctx):
     depth = rel.count("/")
-    write(rel, env.get_template(tpl).render(root="../" * depth, **common, **ctx))
+    write(rel, env.get_template(tpl).render(root=("../" * depth) or "./", **common, **ctx))
 
 
 # çalışma alanları
