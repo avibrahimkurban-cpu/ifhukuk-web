@@ -5,9 +5,9 @@ url: https://ifhukuk.com
 # Sitenin yayınlandığı klasör. Önizleme: /ifhukuk-web/   ifhukuk.com'a geçince: /
 base_path: /ifhukuk-web/
 
-# Logo dosyaları depoya eklenince assets/ yolları kullanılacak.
-logo_light: https://ifhukuk.com/assets/img/white@4x.png
-logo_dark: https://ifhukuk.com/assets/img/black@4x.png
+# Logo dosyaları (koyu zemin için beyaz, açık zemin için siyah)
+logo_light: assets/img/logo-beyaz.png
+logo_dark: assets/img/logo-siyah.png
 
 phone: "+905380408272"
 phone_display: "+90 538 040 82 72"

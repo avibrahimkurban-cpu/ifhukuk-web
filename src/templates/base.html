@@ -32,7 +32,7 @@
 <a class="skip" href="#icerik">İçeriğe geç</a>
 <header class="site-head">
   <div class="wrap head-row">
-    <a class="brand" href="{{ root }}" aria-label="{{ site.title }} ana sayfa"><img src="{{ site.logo_light }}" alt="{{ site.title }}" height="34"></a>
+    <a class="brand" href="{{ root }}" aria-label="{{ site.title }} ana sayfa"><img src="{{ root }}{{ site.logo_light }}" alt="{{ site.title }}" width="311" height="22"></a>
     <button class="menu-btn" aria-label="Menü" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav" aria-label="Ana menü">
       <a href="{{ root }}#hakkimizda">Hakkımızda</a>
@@ -52,7 +52,7 @@
 <footer class="site-foot">
   <div class="wrap">
     <div class="foot-top">
-      <img src="{{ site.logo_light }}" alt="{{ site.title }}" height="30">
+      <img src="{{ root }}{{ site.logo_light }}" alt="{{ site.title }}" width="311" height="22" loading="lazy">
       <dl>
         <div><dt>Telefon</dt><dd><a href="tel:{{ site.phone }}">{{ site.phone_display }}</a></dd></div>
         <div><dt>E-posta</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
