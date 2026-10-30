@@ -3,7 +3,7 @@ title: IF PARTNERS HUKUK
 description: Kadıköy/İstanbul'da ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında dava takibi ve danışmanlık hizmeti veren avukatlık bürosu.
 url: https://ifhukuk.com
 # Sitenin yayınlandığı klasör. Önizleme: /ifhukuk-web/   ifhukuk.com'a geçince: /
-base_path: /ifhukuk-web/
+base_path: /
 
 # Logo dosyaları (koyu zemin için beyaz, açık zemin için siyah)
 logo_light: assets/img/logo-beyaz.png
