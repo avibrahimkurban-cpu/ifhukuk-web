@@ -26,6 +26,6 @@ steps:
 
 **İkamet izninin süresini takip etmek sizin sorumluluğunuzdadır.** İkamet izninin uzatma başvurusu, iznin süresi dolmadan yapılmalıdır. Süre aşımı, idari para cezasına ve ileride Türkiye'ye girişte sorun yaşanmasına yol açabilir.
 
-**Sınır dışı etme kararına karşı dava süresi çok kısadır.** Sınır dışı etme kararına karşı idare mahkemesinde dava açılabilir. Dava açma süresi, kararın tebliğinden itibaren işlemeye başlar ve oldukça kısadır. Bu nedenle karar size tebliğ edildiğinde vakit kaybetmeden bir avukata başvurmanız gerekir.
+**Sınır dışı etme kararına karşı dava süresi 7 gündür.** Sınır dışı etme kararına karşı, kararın tebliğinden itibaren 7 gün içinde idare mahkemesinde dava açılabilir. İdari gözetim kararına karşı ise sulh ceza hâkimliğine başvurulur. Ayrıntılar için [Sınır Dışı Etme ve İdari Gözetim Kararlarına İtiraz](../../blog/sinir-disi-etme-ve-idari-gozetim-kararina-itiraz/) yazımıza bakabilirsiniz.
 
 **Yurt dışında verilen boşanma ve diğer kararlar Türkiye'de kendiliğinden geçerli olmaz.** Yabancı mahkeme kararlarının Türkiye'de hüküm doğurması için tanıma veya tenfiz kararı alınması gerekir. Örneğin yurt dışında boşanan bir kişinin Türkiye'deki nüfus kaydında bu durumun görünmesi için tanıma davası açılmalıdır.

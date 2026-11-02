@@ -269,3 +269,10 @@ a.area:hover h3{color:var(--accent)}
 .contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
 .contact-actions .btn{margin-top:0}
 .foot-top dd a{border-bottom:0}
+
+/* yazı içi tablolar */
+.prose .table-wrap{overflow-x:auto;margin:1.4em 0}
+.prose table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem;background:var(--card)}
+.prose th,.prose td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.prose thead th{background:var(--deep);color:var(--on-dark);font-weight:600;font-size:.85rem}
+.prose tbody td:first-child{font-weight:600;color:var(--ink)}

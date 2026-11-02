@@ -29,7 +29,8 @@ def front(path):
 
 
 def md(text):
-    return markdown.markdown(text, extensions=["extra", "sane_lists"])
+    html = markdown.markdown(text, extensions=["extra", "sane_lists"])
+    return html.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
 
 
 def write(rel, html):
