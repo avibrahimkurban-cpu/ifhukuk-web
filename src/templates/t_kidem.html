@@ -1,0 +1,24 @@
+<form class="tool-form" novalidate>
+  <fieldset>
+    <legend>Çalışma bilgileri</legend>
+    <div class="fgrid fg4">
+      <div class="f"><label for="kdGiris">İşe giriş tarihi</label><input id="kdGiris" type="date" value="2019-03-01"></div>
+      <div class="f"><label for="kdCikis">İşten çıkış tarihi</label><input id="kdCikis" type="date" value="2026-10-31"></div>
+      <div class="f"><label for="kdUcret">Son brüt aylık ücret (TL)</label><input id="kdUcret" inputmode="decimal" value="45.000"></div>
+      <div class="f"><label for="kdEk">Düzenli ek ödemeler, aylık brüt (TL)</label><input id="kdEk" inputmode="decimal" value="0" placeholder="Yemek, yol, prim vb."></div>
+      <div class="f"><label for="kdVergi">İhbar için gelir vergisi oranı</label><select id="kdVergi"><option>15</option><option>20</option><option>27</option><option>35</option><option>40</option></select></div>
+      <div class="f fcheck"><label><input type="checkbox" id="kdKidemHak" checked> Kıdem tazminatı</label><label><input type="checkbox" id="kdIhbarHak" checked> İhbar tazminatı</label></div>
+    </div>
+  </fieldset>
+</form>
+<div class="tool-result" id="kdSonuc" aria-live="polite"></div>
+<div class="tool-notes prose">
+  <h2>Nasıl hesaplanır?</h2>
+  <ul>
+    <li><strong>Kıdem tazminatı:</strong> Her tam hizmet yılı için 30 günlük giydirilmiş brüt ücret ödenir, artan süreler orantılı hesaplanır (1475 s. Kanun m.14). Ücret, çıkış tarihindeki <strong>kıdem tazminatı tavanını</strong> aşamaz. Gelir vergisi kesilmez, yalnızca damga vergisi (binde 7,59) kesilir. Hak doğması için en az bir yıl çalışılmış olması ve fesih şeklinin kıdem tazminatına hak kazandırması gerekir.</li>
+    <li><strong>İhbar tazminatı:</strong> Bildirim süresi hizmet süresine göre 2, 4, 6 veya 8 haftadır (4857 s. Kanun m.17). Gelir vergisi ve damga vergisi kesilir; gelir vergisi oranı yılın vergi dilimine göre değişir.</li>
+    <li>Giydirilmiş ücrete düzenli olarak ödenen yemek, yol, prim gibi ödemeler eklenir. Fazla mesai, yıllık izin ve diğer işçilik alacakları bu araçta hesaplanmaz.</li>
+  </ul>
+  <h3>Son dönem kıdem tazminatı tavanları</h3>
+  <div class="tool-table"><table><thead><tr><th>Dönem başlangıcı</th><th>Tavan (brüt)</th></tr></thead><tbody id="kdTavanlar"></tbody></table></div>
+</div>

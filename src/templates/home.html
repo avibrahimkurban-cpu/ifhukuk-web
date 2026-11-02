@@ -101,6 +101,20 @@
   </div>
 </section>
 
+<section class="block tone-stone" id="araclar">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Araçlar</p>
+      <h2>Hesaplama araçları</h2>
+      <p>Sık karşılaşılan hesaplamalar için örnek sonuç veren araçlar.</p>
+    </div>
+    <ul class="tool-links">
+      {% for t in araclar %}<li><a href="{{ root }}araclar/{{ t.slug }}/"><span class="tl-t">{{ t.title }}</span><span class="tl-d">{{ t.desc }}</span><span class="tl-a" aria-hidden="true">→</span></a></li>{% endfor %}
+    </ul>
+    <p class="tool-disclaimer short">Hesaplama araçları yalnızca örnek ve genel bilgilendirme amaçlıdır; sonuçlar kesin hesap niteliği taşımaz ve hukuki görüş yerine geçmez. Araçların kullanımından doğabilecek sonuçlardan sorumluluk kabul edilmez.</p>
+  </div>
+</section>
+
 {% if posts %}
 <section class="block tone-sage" id="yazilar">
   <div class="wrap">

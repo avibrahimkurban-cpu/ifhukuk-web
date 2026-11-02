@@ -1,0 +1,24 @@
+<form class="tool-form" novalidate>
+  <fieldset>
+    <legend>Sözleşme bilgileri</legend>
+    <div class="fgrid fg4">
+      <div class="f"><label for="kYil">Başlangıç yılı</label><select id="kYil"></select></div>
+      <div class="f"><label for="kAy">Başlangıç ayı</label><select id="kAy"></select></div>
+      <div class="f"><label for="kGun">Gün</label><input id="kGun" type="number" min="1" max="31" value="1"></div>
+      <div class="f"><label for="kTur">Kiralanan</label><select id="kTur"><option value="konut">Konut</option><option value="isyeri">Çatılı işyeri</option></select></div>
+      <div class="f f2"><label for="kBedel">Başlangıç aylık kira bedeli (TL)</label><input id="kBedel" inputmode="decimal" value="10.000"></div>
+      <div class="f"><label for="kHedefYil">Hesaplanacak yıl</label><select id="kHedefYil"></select></div>
+      <div class="f"><label for="kHedefAy">Hesaplanacak ay</label><select id="kHedefAy"></select></div>
+    </div>
+  </fieldset>
+</form>
+<div class="tool-result" id="kSonuc" aria-live="polite"></div>
+<div class="tool-notes prose">
+  <h2>Nasıl hesaplanır?</h2>
+  <ul>
+    <li>Her kira yılının başında kira bedeli, bir önceki kira yılının <strong>TÜFE 12 aylık ortalamalara göre değişim oranı</strong> kadar artırılabilir (TBK m.344). Uygulamada kira yılının başladığı aydan bir önceki ay açıklanan oran kullanılır.</li>
+    <li>11 Haziran 2022 ile 1 Temmuz 2024 arasında yenilenen <strong>konut</strong> kira dönemlerinde artış %25 ile sınırlandırılmıştı. Araç bu dönemde konutlar için %25'i esas alır; işyerlerinde bu sınır uygulanmamıştır.</li>
+    <li>Taraflar daha düşük bir artış kararlaştırabilir. Beş yılı aşan kira ilişkilerinde yeni bedel, kira tespit davasıyla hakkaniyete göre belirlenebilir.</li>
+    <li>Oranlar TÜİK verilerinden alınmıştır; Aralık 2004'ten <span id="kSonVeri"></span> ayına kadar tüm aylar tanımlıdır. 1 Temmuz 2012 öncesindeki yenilemeler bilgi amaçlıdır.</li>
+  </ul>
+</div>

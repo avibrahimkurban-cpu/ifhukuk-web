@@ -1,0 +1,26 @@
+# Hesaplama araçlarının verileri. Değişiklikten sonra: python3 build.py
+# TÜFE 12 aylık ortalama değişim oranları src/veri/tufe12.json dosyasında (anahtar: TÜİK veri ayı "YYYY-AA").
+# Her ay TÜİK açıklamasından sonra yeni ay eklenmeli.
+
+yasal_faiz:            # 3095 s. Kanun m.1 — başlangıç tarihi: yıllık oran (%)
+  "2006-01-01": 9      # 2005/9831 s. BKK
+  "2024-06-01": 24     # 8485 s. Cumhurbaşkanı Kararı
+  "2026-07-31": 31     # 7589 s. Kanun m.10 (RG 31.07.2026)
+
+kidem_tavan:           # dönem başlangıcı: brüt tavan (TL)
+  "2020-01-01": 6730.15
+  "2020-07-01": 7117.17
+  "2021-01-01": 7638.96
+  "2021-07-01": 8284.51
+  "2022-01-01": 10848.59
+  "2022-07-01": 15371.40
+  "2023-01-01": 19982.83
+  "2023-07-01": 23489.83
+  "2024-01-01": 35058.58
+  "2024-07-01": 41828.42
+  "2025-01-01": 46655.43
+  "2025-07-01": 53919.68
+  "2026-01-01": 64948.77
+  "2026-07-01": 73729.87
+
+damga_vergisi: 0.759   # binde 7,59

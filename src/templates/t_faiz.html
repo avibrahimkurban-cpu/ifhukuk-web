@@ -1,0 +1,22 @@
+<form class="tool-form" novalidate>
+  <fieldset>
+    <legend>Alacak kalemleri</legend>
+    <div id="fKalemler" class="kalemler"></div>
+    <button type="button" class="btn" id="fEkle">+ Kalem ekle</button>
+  </fieldset>
+  <fieldset>
+    <legend>Hesap tarihi</legend>
+    <div class="fgrid fg4"><div class="f"><label for="fBitis">Faizin hesaplanacağı son tarih</label><input id="fBitis" type="date"></div></div>
+  </fieldset>
+</form>
+<div class="tool-result" id="fSonuc" aria-live="polite"></div>
+<div class="tool-notes prose">
+  <h2>Nasıl hesaplanır?</h2>
+  <ul>
+    <li>3095 sayılı Kanuni Faiz ve Temerrüt Faizine İlişkin Kanun'un 1. maddesindeki <strong>yasal faiz</strong> oranları kullanılır. Faiz, her kalem için başlangıç tarihinden son tarihe kadar <strong>basit faiz</strong> olarak ve yılı 365 gün kabul edilerek hesaplanır.</li>
+    <li>Oran değiştiğinde süre dönemlere bölünür ve her dönem kendi oranıyla hesaplanır.</li>
+    <li>Ticari işlerdeki avans (ticari temerrüt) faizi, sözleşmesel faiz ve icra takibinden sonraki faiz bu araçta hesaplanmaz.</li>
+  </ul>
+  <h3>Kullanılan oranlar</h3>
+  <div class="tool-table"><table><thead><tr><th>Dönem</th><th>Yıllık oran</th></tr></thead><tbody id="fOranlar"></tbody></table></div>
+</div>

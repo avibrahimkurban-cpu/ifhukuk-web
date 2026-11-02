@@ -276,3 +276,55 @@ a.area:hover h3{color:var(--accent)}
 .prose th,.prose td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 .prose thead th{background:var(--deep);color:var(--on-dark);font-weight:600;font-size:.85rem}
 .prose tbody td:first-child{font-weight:600;color:var(--ink)}
+
+/* hesaplama araçları — ana sayfa bağlantıları */
+.tool-links{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.tool-links a{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr) auto;gap:clamp(16px,4vw,56px);align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.tool-links a:hover .tl-t,.tool-links a:hover .tl-a{color:var(--accent)}
+.tl-t{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.2}
+.tl-d{color:var(--ink-2);font-size:.97rem}
+.tl-a{font-size:1.2rem;color:var(--accent)}
+@media (max-width:760px){.tool-links a{grid-template-columns:minmax(0,1fr) auto}.tl-d{grid-column:1/-1;grid-row:2}}
+.tool-disclaimer{font-size:.88rem;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:14px 16px;margin:0 0 28px;max-width:none}
+.tool-disclaimer.short{margin:24px 0 0;font-size:.84rem}
+
+/* hesaplama araçları — araç sayfası */
+.tool-wrap{max-width:1080px}
+.tool-form{display:flex;flex-direction:column;gap:20px}
+.tool-form fieldset{border:1px solid var(--line);background:var(--card);padding:20px 22px 22px;margin:0;min-width:0}
+.tool-form legend{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:0 6px}
+.fgrid{display:grid;gap:14px}
+.fg4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f2{grid-column:span 2}
+.f label{font-size:.78rem;font-weight:600;color:var(--ink-2)}
+.f input,.f select{font:inherit;font-size:1rem;padding:11px 12px;border:1px solid #BDB6AB;background:#fff;color:var(--ink);border-radius:0;width:100%;min-width:0;min-height:46px}
+.f input:focus,.f select:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.fcheck{flex-direction:row;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:22px}
+.fcheck label{display:flex;gap:8px;align-items:center;font-size:.95rem;font-weight:500;color:var(--ink)}
+.fcheck input{width:18px;height:18px;min-height:0}
+@media (max-width:860px){.fg4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.fg4{grid-template-columns:1fr}.f2{grid-column:auto}}
+.kalemler{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
+.kalem{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) minmax(0,1.2fr) auto;gap:12px;align-items:end;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+.k-sil{font:inherit;font-size:.88rem;background:none;border:1px solid var(--line);color:var(--ink-2);padding:0 14px;min-height:46px;cursor:pointer}
+.k-sil:hover{border-color:var(--accent);color:var(--accent)}
+.tool-form .btn{align-self:flex-start;cursor:pointer;font:inherit;font-weight:500}
+@media (max-width:760px){.kalem{grid-template-columns:1fr 1fr}.kalem .f:first-child{grid-column:1/-1}}
+.tool-result{margin-top:28px}
+.tool-msg{background:var(--sage);padding:12px 16px;margin:12px 0 0;font-size:.95rem}
+.tool-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 18px;border-top:2px solid var(--ink)}
+.tool-sum div{padding:16px 16px 14px 0;border-bottom:1px solid var(--line)}
+.tool-sum dt{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tool-sum dd{margin:6px 0 0;font-family:var(--serif);font-size:clamp(1.25rem,2.2vw,1.6rem);font-variant-numeric:tabular-nums}
+.tool-sum .hl dd{color:var(--accent)}
+@media (max-width:640px){.tool-sum{grid-template-columns:1fr}}
+.tool-table{overflow-x:auto;border:1px solid var(--line);background:var(--card)}
+.tool-table table{border-collapse:collapse;width:100%;min-width:720px;font-size:.92rem}
+.tool-table th,.tool-table td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tool-table thead th{background:var(--deep);color:var(--on-dark);font-weight:600;font-size:.8rem;white-space:nowrap}
+.tool-table td{font-variant-numeric:tabular-nums;white-space:pre-line}
+.tool-table tfoot td{font-weight:600;border-top:2px solid var(--ink)}
+.tool-notes .tool-table table{min-width:0}
+.tool-notes{margin-top:44px}
+.tool-notes h2{margin-top:0}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><a href="{{ root }}#araclar">Hesaplama araçları</a></p>
+    <h1>{{ page_title }}</h1>
+    <p class="lead">{{ lead }}</p>
+  </div>
+</header>
+<section class="block tone-stone">
+  <div class="wrap tool-wrap">
+    {% include "_sorumluluk.html" %}
+    {% include tool_tpl %}
+  </div>
+</section>
+<section class="block tone-sage">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Diğer araçlar</p><h2>Hesaplama araçları</h2></div>
+    <ul class="alan-links">
+      {% for t in araclar if t.slug != slug %}<li><a href="{{ root }}araclar/{{ t.slug }}/">{{ t.title }} <span aria-hidden="true">→</span></a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ root }}assets/araclar-veri.js?v={{ build_id }}"></script><script src="{{ root }}assets/araclar.js?v={{ build_id }}"></script>{% endblock %}

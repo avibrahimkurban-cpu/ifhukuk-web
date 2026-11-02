@@ -44,6 +44,13 @@ def render(tpl, rel, **ctx):
     write(rel, env.get_template(tpl).render(root=("../" * depth) or "./", **common, **ctx))
 
 
+
+# hesaplama araçlarının verisi
+import json as _json
+_v = yaml.safe_load((SRC / "veri" / "araclar.yml").read_text(encoding="utf-8"))
+_v["tufe12"] = _json.loads((SRC / "veri" / "tufe12.json").read_text(encoding="utf-8"))
+write("assets/araclar-veri.js", "window.ARAC_VERI=" + _json.dumps(_v, ensure_ascii=False, separators=(",", ":")) + ";\n")
+
 # çalışma alanları
 alanlar = []
 for f in (SRC / "alanlar").glob("*.md"):
@@ -65,10 +72,9 @@ posts.sort(key=lambda p: p["date_iso"], reverse=True)
 categories = sorted({p["category"] for p in posts if p.get("category")})
 
 # eski üretimleri temizle
-for d in ("calisma-alanlari", "blog"):
+for d in ("calisma-alanlari", "blog", "araclar"):
     shutil.rmtree(ROOT / d, ignore_errors=True)
 
-render("home.html", "index.html", alanlar=alanlar, posts=posts, canonical="/")
 render("blog.html", "blog.html", posts=posts, categories=categories, section="blog",
        page_title="Blog", canonical="/blog.html",
        description="IF PARTNERS HUKUK'tan ceza, ticaret, icra-iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında bilgilendirici yazılar.")
@@ -78,6 +84,24 @@ for p in posts:
 for a in alanlar:
     render("alan.html", f"calisma-alanlari/{a['slug']}/index.html", a=a, alanlar=alanlar, section="alan",
            page_title=a["title"], description=a.get("description", a["short"]), canonical=f"/calisma-alanlari/{a['slug']}/")
+
+# hesaplama araçları
+araclar = [
+    dict(slug="kira-artis-hesaplama", title="Kira Artış Hesaplama", tpl="t_kira.html",
+         lead="Sözleşmenin başladığı yıl ve aydan itibaren her kira yılının artışını TÜFE 12 aylık ortalamaya ve %25 sınırına göre yıl yıl hesaplayın.",
+         desc="Kira yılını ve başlangıç ayını seçin; her yılın artışını TÜFE 12 aylık ortalama ve konutta %25 sınırına göre görün."),
+    dict(slug="yasal-faiz-hesaplama", title="Yasal Faiz Hesaplama", tpl="t_faiz.html",
+         lead="Birden fazla alacak kalemi için, her kalemin kendi başlangıç tarihinden itibaren işleyen yasal faizi dönem dönem hesaplayın.",
+         desc="Alacak kalemlerini ve başlangıç tarihlerini girin; 3095 sayılı Kanun'a göre yasal faizi dönem dönem görün."),
+    dict(slug="kidem-ihbar-tazminati-hesaplama", title="Kıdem ve İhbar Tazminatı Hesaplama", tpl="t_kidem.html",
+         lead="İşe giriş ve çıkış tarihleri ile brüt ücrete göre kıdem ve ihbar tazminatını, tavan ve kesintilerle birlikte yaklaşık olarak hesaplayın.",
+         desc="Giriş-çıkış tarihi ve brüt ücretle kıdem ve ihbar tazminatını tavan ve kesintilerle birlikte görün."),
+]
+for t in araclar:
+    render("arac.html", f"araclar/{t['slug']}/index.html", tool_tpl=t["tpl"], slug=t["slug"], araclar=araclar,
+           section="arac", page_title=t["title"], lead=t["lead"], description=t["lead"], canonical=f"/araclar/{t['slug']}/")
+
+render("home.html", "index.html", alanlar=alanlar, posts=posts, araclar=araclar, canonical="/")
 render("page.html", "kvkk.html", body=(SRC / "kvkk.html").read_text(encoding="utf-8"),
        page_title="KVKK Aydınlatma Metni", canonical="/kvkk.html")
 render("page.html", "cerez-politikasi.html", body=(SRC / "cerez.html").read_text(encoding="utf-8"),
@@ -94,7 +118,7 @@ html404 = env.get_template("page.html").render(
 write("404.html", html404)
 
 urls = ["/", "/blog.html"] + [f"/calisma-alanlari/{a['slug']}/" for a in alanlar] + \
-       [f"/blog/{p['slug']}/" for p in posts] + ["/kvkk.html", "/cerez-politikasi.html"]
+       [f"/blog/{p['slug']}/" for p in posts] + [f"/araclar/{t['slug']}/" for t in araclar] + ["/kvkk.html", "/cerez-politikasi.html"]
 write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
       + "".join(f"<url><loc>{site['url']}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 
