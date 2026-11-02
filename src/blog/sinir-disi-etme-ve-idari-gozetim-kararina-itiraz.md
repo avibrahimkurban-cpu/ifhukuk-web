@@ -77,14 +77,4 @@ Sınır dışı etme ve idari gözetim süreçleri, birkaç gün içinde geri d�
 - **Tek seferlik hak:** İdare mahkemesinin kararı kesin olduğu için, ileri sürülmeyen bir delil veya argüman sonradan çoğu zaman ileri sürülemez. Dilekçenin ilk seferde eksiksiz hazırlanması gerekir.
 - **Dil:** Kararların ve tebliğ evrakının içeriğinin yabancının anlayacağı dilde açıklanması, hangi hakların hangi sürede kullanılabileceğinin doğru anlaşılmasını sağlar.
 
-## Özetle
-
-| | Sınır dışı etme kararı | İdari gözetim kararı |
-|---|---|---|
-| Kararı veren | Valilik (İl Göç İdaresi) | Valilik (İl Göç İdaresi) |
-| Başvuru mercii | İdare mahkemesi | Sulh ceza hâkimliği |
-| Başvuru süresi | Tebliğden itibaren **7 gün** | Kanunda süre yok; gözetim boyunca |
-| Karar süresi | 15 gün, kesin | 5 gün, kesin |
-| Başvurunun etkisi | Kural olarak dava sonuçlanana kadar sınır dışı edilmez | Gözetimi kendiliğinden durdurmaz |
-
 Bir yakınınız emniyetten İl Göç İdaresi'ne sevk edildiyse veya size bir sınır dışı etme kararı tebliğ edildiyse, **tebliğ tarihini not edin ve vakit kaybetmeden bir avukata başvurun.** 7 günlük süre, tebliğ anından itibaren işlemeye başlar.
