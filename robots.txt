@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://ifhukuk.com/sitemap.xml
+Disallow: /islistesi/
