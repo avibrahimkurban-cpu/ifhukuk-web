@@ -78,7 +78,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6.6vw,5.4rem);line-height:1.04;letter-spacing:-.015em;margin:0;max-width:14ch;text-wrap:balance;color:var(--on-dark)}
 .hero h1 em{font-style:italic;color:var(--brass)}
 .lead{font-size:clamp(1.05rem,1.6vw,1.24rem);max-width:56ch;margin:28px 0 0}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font-weight:500;text-decoration:none;border:1px solid var(--ink);font-size:.98rem;color:var(--ink);background:transparent}
 .btn.solid{background:var(--ink);color:var(--stone)}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
