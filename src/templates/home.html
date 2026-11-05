@@ -1,41 +1,35 @@
 {% extends "base.html" %}
+{% from "_m.html" import person_card, sector_card %}
 {% block head %}<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LegalService","name":"{{ site.title }}","url":"{{ site.url }}/","telephone":"{{ site.phone }}","email":"{{ site.email }}",
 "address":{"@type":"PostalAddress","streetAddress":"Uzunçayır Cad. No:43 D1 Blok D:26","addressLocality":"Kadıköy","addressRegion":"İstanbul","addressCountry":"TR"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],"areaServed":"TR","knowsLanguage":["tr","en","ug","uz"]{% if site.linkedin %},"sameAs":["{{ site.linkedin }}"]{% endif %}}
 </script>{% endblock %}
 {% block content %}
-<section class="hero tone-deep">
+<section class="hero hero-xl tone-deep">
   <div class="wrap">
-    <p class="eyebrow">Kadıköy · İstanbul</p>
+    <p class="eyebrow">Avukatlık Bürosu · Kadıköy, İstanbul</p>
     <h1>Hukuki süreçleriniz, <em>süresinde</em> ve özenle.</h1>
     <div class="hero-actions">
-      <a class="btn solid" href="#iletisim">Görüşme talep edin</a>
-      <a class="btn" href="#calisma-alanlari">Çalışma alanları</a>
+      <a class="btn solid" href="{{ root }}iletisim/">Görüşme talep edin</a>
+      <a class="btn" href="{{ root }}hakkimizda/">Büromuzu tanıyın</a>
     </div>
     <dl class="facts">
       <div><dt>Baro</dt><dd>İstanbul Barosu</dd></div>
       <div><dt>Adres</dt><dd><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ site.address_short }}</a></dd></div>
       <div><dt>Çalışma saatleri</dt><dd>{{ site.hours }}</dd></div>
-      <div><dt>Telefon</dt><dd><a href="tel:{{ site.phone }}">{{ site.phone_local }}</a></dd></div>
+      <div><dt>Görüşme dilleri</dt><dd>Türkçe · İngilizce · Uygurca · Özbekçe</dd></div>
     </dl>
   </div>
 </section>
 
-<section class="block tone-stone" id="hakkimizda">
-  <div class="wrap about-grid">
-    <div>
-      <p class="eyebrow">Büromuz</p>
-      <h2 class="sec-title">Hakkımızda</h2>
-    </div>
-    <div class="body">
-      <p>Her dosyayı, müvekkilin durumunu dinleyerek ve hukuki seçenekleri açıkça ortaya koyarak ele alıyoruz.</p>
+<section class="block tone-stone intro">
+  <div class="wrap intro-grid">
+    <p class="eyebrow">Büromuz</p>
+    <p class="statement">Her dosyayı, müvekkilin durumunu dinleyerek ve hukuki seçenekleri açıkça ortaya koyarak ele alıyoruz.</p>
+    <div class="intro-body">
       <p>IF PARTNERS HUKUK, Kadıköy'de faaliyet gösteren bir avukatlık bürosudur. Dava ve takip süreçlerinde süreleri yakından izliyor, müvekkillerimizi dosyalarındaki her önemli gelişmeden haberdar ediyoruz. Uyuşmazlık doğmadan önce sözleşme ve danışmanlık desteğiyle riskleri azaltmaya, uyuşmazlık doğduğunda ise dosyayı baştan sona titizlikle yürütmeye çalışıyoruz.</p>
-      <ul class="principles">
-        <li><b>Açık iletişim</b><span>Dosyanın durumu, riskleri ve olası sonuçları anlaşılır bir dille paylaşılır.</span></li>
-        <li><b>Süre takibi</b><span>Kanuni süreler ve duruşma tarihleri büro içinde ayrı ayrı izlenir.</span></li>
-        <li><b>Gizlilik</b><span>Müvekkil bilgileri avukatlık meslek kuralları ve KVKK kapsamında korunur.</span></li>
-      </ul>
+      <a class="link-arrow" href="{{ root }}hakkimizda/">Hakkımızda →</a>
     </div>
   </div>
 </section>
@@ -45,63 +39,74 @@
     <div class="sec-head">
       <p class="eyebrow">Çalışma alanları</p>
       <h2>Çalışma alanlarımız</h2>
-      <p>Her alanın sayfasında; hangi konularda çalıştığımızı, dosyaların nasıl yürütüldüğünü ve bilmeniz gereken temel noktaları bulabilirsiniz.</p>
+      <p>Her alanın sayfasında; hangi konularda çalıştığımızı, dosyaların nasıl yürütüldüğünü ve bilmeniz gereken temel noktaları bulabilirsiniz. <a href="{{ root }}calisma-alanlari/">Tüm alanlar →</a></p>
     </div>
     <div class="areas">
       {% for a in alanlar %}
       <a class="area" href="{{ root }}calisma-alanlari/{{ a.slug }}/">
         <div><h3>{{ a.title }}</h3><span class="forum"><b>Merciler</b>{{ a.forum[:4]|join(' · ') }}</span></div>
         <div><p>{{ a.short }}</p>
-          <ul class="topics">{% for t in a.topics[:4] %}<li>{{ t }}</li>{% endfor %}</ul>
           <span class="area-more">Ayrıntılar ve süreç →</span></div>
       </a>{% endfor %}
     </div>
   </div>
 </section>
 
-<section class="block tone-forest" id="surec">
+<section class="block tone-deep expect">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Çalışma biçimi</p>
-      <h2>Bir dosya bizde nasıl ilerler</h2>
-      <p>İlk görüşmeden dosyanın sonuçlanmasına kadar her aşamada ne olacağını önceden bilirsiniz.</p>
+      <p class="eyebrow">Bizimle çalışırken</p>
+      <h2>Dosyanızda sizi neler bekler</h2>
+      <p>Her müvekkilimizle aynı çalışma düzenini uygularız.</p>
     </div>
-    <ol class="steps">
-      <li><b>Ön görüşme</b><span>Durumunuzu ve elinizdeki belgeleri yüz yüze ya da çevrim içi görüşmede dinleriz.</span></li>
-      <li><b>Hukuki değerlendirme</b><span>Seçenekleri, süreleri, masrafları ve riskleri yazılı olarak paylaşırız.</span></li>
-      <li><b>Vekalet ve sözleşme</b><span>Kapsam ve ücret avukatlık sözleşmesiyle açıkça belirlenir.</span></li>
-      <li><b>Takip ve bilgilendirme</b><span>Duruşma, tebligat ve karar gibi her önemli gelişmeyi size iletiriz.</span></li>
-    </ol>
+    <ul class="expect-list">
+      {% for e in beklentiler %}<li><b>{{ e[0] }}</b><span>{{ e[1] }}</span></li>{% endfor %}
+    </ul>
   </div>
 </section>
 
-<section class="block tone-stone" id="ekibimiz">
+<section class="block tone-stone" id="sektorler">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Avukatlarımız</p>
-      <h2>Ekibimiz</h2>
-      <p>Dosyalarınız, büromuzun avukatları tarafından doğrudan ve birebir takip edilir.</p>
+      <p class="eyebrow">Sektörler</p>
+      <h2>Birlikte çalıştığımız sektörler</h2>
+      <p>Müvekkillerimizin önemli bir kısmı aşağıdaki sektörlerde faaliyet gösterir. Her sektörün kendine özgü hukuki ihtiyaçlarını sektör sayfalarında topladık. <a href="{{ root }}sektorler/">Tüm sektörler →</a></p>
     </div>
-    <div class="team">
-      <article class="person"><picture class="ph"><source type="image/webp" srcset="{{ root }}assets/img/ibrahim-kurban-480.webp 480w, {{ root }}assets/img/ibrahim-kurban-800.webp 800w" sizes="(max-width:520px) 92vw, (max-width:860px) 46vw, 360px"><img src="{{ root }}assets/img/ibrahim-kurban-800.jpg" srcset="{{ root }}assets/img/ibrahim-kurban-480.jpg 480w, {{ root }}assets/img/ibrahim-kurban-800.jpg 800w" sizes="(max-width:520px) 92vw, (max-width:860px) 46vw, 360px" width="800" height="1000" alt="Av. İbrahim Kurban" loading="lazy" decoding="async"></picture>
-        <h3>Av. İbrahim Kurban</h3><p class="role">Kurucu Avukat</p>
-        <p class="bio">İstanbul Şehir Üniversitesi Hukuk Fakültesi'nden mezun olmuş, Bahçeşehir Üniversitesi'nde Bilişim Hukuku alanında yüksek lisansını tamamlamıştır. Yedi yılı aşkın süredir ağırlıklı olarak ceza hukuku ve şirketler hukuku dosyalarında çalışmaktadır. Dosyalarını baştan sona müvekkilleriyle birebir iletişim içinde yürütür. Bilişim hukuku alanındaki akademik birikimi, bilişim suçları ve kişisel verilere ilişkin dosyalarda büroya ayrı bir bakış açısı kazandırmaktadır.</p>
-        <p class="langs"><b>Diller</b>Türkçe · İngilizce · Uygurca · Özbekçe</p>
-        <p class="bar">İstanbul Barosu</p></article>
-      <article class="person"><picture class="ph"><source type="image/webp" srcset="{{ root }}assets/img/firat-talha-ozdemir-480.webp 480w, {{ root }}assets/img/firat-talha-ozdemir-800.webp 800w" sizes="(max-width:520px) 92vw, (max-width:860px) 46vw, 360px"><img src="{{ root }}assets/img/firat-talha-ozdemir-800.jpg" srcset="{{ root }}assets/img/firat-talha-ozdemir-480.jpg 480w, {{ root }}assets/img/firat-talha-ozdemir-800.jpg 800w" sizes="(max-width:520px) 92vw, (max-width:860px) 46vw, 360px" width="800" height="1000" alt="Av. Fırat Talha Özdemir" loading="lazy" decoding="async"></picture>
-        <h3>Av. Fırat Talha Özdemir</h3><p class="role">Kurucu Avukat</p>
-        <p class="bio">İstanbul Şehir Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Yedi yılı aşkın meslek hayatı boyunca sağlık hukuku, iş hukuku, icra ve iflas hukuku ile ticaret hukuku alanlarında uzun süre yoğun olarak çalışmıştır. Sağlık kuruluşları ve ticari işletmelerle yürüttüğü çalışmalarda edindiği deneyimle, dosyaların hem hukuki hem de uygulamadaki boyutunu birlikte ele alır.</p>
-        <p class="langs"><b>Diller</b>Türkçe · İngilizce</p>
-        <p class="bar">İstanbul Barosu</p></article>
-      <article class="person"><div class="ph" aria-hidden="true"><span>HM</span></div>
-        <h3>Stj. Av. Harun Enes Maden</h3><p class="role">Stajyer Avukat</p>
-        <p class="bio">İstanbul Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Avukatlık stajını büromuzda sürdürmekte; dosyaların hazırlanması, takibi ve araştırma süreçlerinde ekibe destek vermektedir.</p>
-        <p class="bar">İstanbul Barosu</p></article>
+    <div class="sector-grid">
+      {% for s in sektorler %}{{ sector_card(s, root) }}{% endfor %}
     </div>
   </div>
 </section>
 
-<section class="block tone-stone" id="araclar">
+<section class="block tone-sage" id="ekibimiz">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ekibimiz</p>
+      <h2>Ortaklarımız ve ekibimiz</h2>
+      <p>Dosyalarınız, büromuzun avukatları tarafından doğrudan ve birebir takip edilir. <a href="{{ root }}ekibimiz/">Ekibimiz →</a></p>
+    </div>
+    <div class="people">
+      {% for p in ekip %}{{ person_card(p, root) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if posts %}
+<section class="block tone-stone" id="yayinlar">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Yayınlar</p>
+      <h2>Büromuzdan yayınlar</h2>
+      <p>Hukuki gelişmeler ve uygulamada sık karşılaşılan konular üzerine bilgilendirici yazılar. <a href="{{ root }}yayinlar/">Tüm yayınlar →</a></p>
+    </div>
+    <div class="post-list">
+      {% for p in posts[:3] %}{% include "card.html" %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="block tone-sage" id="araclar">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Araçlar</p>
@@ -115,39 +120,6 @@
   </div>
 </section>
 
-{% if posts %}
-<section class="block tone-sage" id="yazilar">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Blog</p>
-      <h2>Son yazılar</h2>
-      <p>Hukuki gelişmeler ve sık karşılaşılan konular üzerine bilgilendirici yazılar. <a href="{{ root }}blog.html">Tüm yazılar →</a></p>
-    </div>
-    <div class="post-list">
-      {% for p in posts[:3] %}{% include "card.html" %}{% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<section class="block tone-stone" id="sss">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Sık sorulanlar</p>
-      <h2>Merak edilenler</h2>
-      <p>Büromuza en sık yöneltilen soruların kısa yanıtları.</p>
-    </div>
-    <div class="faq">
-      <details><summary>Ön görüşme nasıl yapılıyor?</summary><p>Görüşmeyi telefonla, e-postayla ya da WhatsApp üzerinden planlayabilirsiniz. Görüşme büromuzda yüz yüze ya da görüntülü olarak yapılabilir. Ön görüşmenin koşullarını randevu sırasında öğrenebilirsiniz.</p></details>
-      <details><summary>Avukatlık ücreti nasıl belirleniyor?</summary><p>Ücret; işin niteliği, kapsamı ve gerektirdiği emek dikkate alınarak, Türkiye Barolar Birliği Avukatlık Asgari Ücret Tarifesi'nin altında olmamak üzere avukatlık sözleşmesiyle belirlenir. Harç, bilirkişi ve tebligat gibi yargılama giderleri ücretten ayrıdır.</p></details>
-      <details><summary>Davam ne kadar sürer?</summary><p>Süre; davanın türüne, görüldüğü mahkemenin iş yüküne, bilirkişi incelemesi gerekip gerekmediğine ve kanun yollarına başvurulup başvurulmadığına göre değişir. Ön değerlendirmede dosyanız için beklenen aşamaları ve tahmini süreyi paylaşırız.</p></details>
-      <details><summary>Paylaştığım bilgiler gizli kalır mı?</summary><p>Evet. Avukatlar, Avukatlık Kanunu uyarınca mesleki sır saklama yükümlülüğü altındadır. Kişisel verileriniz ayrıca 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında işlenir ve korunur.</p></details>
-      <details><summary>İstanbul dışındaki dosyaları takip ediyor musunuz?</summary><p>UYAP üzerinden yürütülebilen işlemler ve gerektiğinde yerinde takip ile İstanbul dışındaki dosyalarda da hizmet verebiliyoruz. Dosyanın durumuna göre birlikte değerlendiririz.</p></details>
-      <details><summary>Yabancı dilde görüşme yapabilir miyim?</summary><p>Evet. Türkçenin yanı sıra İngilizce, Uygurca ve Özbekçe dillerinde de görüşme yapabiliyoruz.</p></details>
-    </div>
-  </div>
-</section>
-
 <section class="contact tone-deep" id="iletisim">
   <div class="wrap">
     <p class="eyebrow">İletişim</p>
@@ -158,8 +130,8 @@
       <div><dt>Adres</dt><dd><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ site.address }}</a></dd></div>
     </dl>
     <div class="contact-actions">
+      <a class="btn solid" href="{{ root }}iletisim/">İletişim sayfası</a>
       <a class="btn" href="{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp'tan yazın</a>
-      {% if site.linkedin %}<a class="btn" href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
     </div>
   </div>
 </section>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "_m.html" import page_head %}
+{% block content %}
+{{ page_head("İletişim", "İletişim", "Ön görüşme için telefon, e-posta veya WhatsApp üzerinden bize ulaşabilirsiniz. Görüşmeler büromuzda yüz yüze ya da görüntülü olarak yapılabilir.", root) }}
+<section class="block tone-stone">
+  <div class="wrap">
+    <dl class="contact-big">
+      <div><dt>Telefon · WhatsApp</dt><dd><a href="tel:{{ site.phone }}">{{ site.phone_display }}</a></dd></div>
+      <div><dt>E-posta</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+      <div><dt>Adres</dt><dd><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ site.address }}</a></dd></div>
+      <div><dt>Çalışma saatleri</dt><dd>{{ site.hours }}</dd></div>
+      <div><dt>Görüşme dilleri</dt><dd>Türkçe · İngilizce · Uygurca · Özbekçe</dd></div>
+      <div><dt>Baro</dt><dd>İstanbul Barosu</dd></div>
+    </dl>
+    <div class="contact-actions">
+      <a class="btn solid" href="{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+      <a class="btn" href="{{ site.maps }}" target="_blank" rel="noopener">Haritada göster</a>
+      {% if site.linkedin %}<a class="btn" href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+    </div>
+    <p class="tool-disclaimer short">Bize ilettiğiniz bilgiler, avukatlık meslek kuralları ve <a href="{{ root }}kvkk.html">KVKK Aydınlatma Metni</a> kapsamında işlenir. Bir avukatlık sözleşmesi kurulmadan önce yapılan yazışmalar hukuki görüş niteliği taşımaz.</p>
+  </div>
+</section>
+<section class="block tone-sage" id="sss">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Sık sorulanlar</p><h2>Merak edilenler</h2><p>Büromuza en sık yöneltilen soruların kısa yanıtları.</p></div>
+    <div class="faq">
+      <details><summary>Ön görüşme nasıl yapılıyor?</summary><p>Görüşmeyi telefonla, e-postayla ya da WhatsApp üzerinden planlayabilirsiniz. Görüşme büromuzda yüz yüze ya da görüntülü olarak yapılabilir. Ön görüşmenin koşullarını randevu sırasında öğrenebilirsiniz.</p></details>
+      <details><summary>Avukatlık ücreti nasıl belirleniyor?</summary><p>Ücret; işin niteliği, kapsamı ve gerektirdiği emek dikkate alınarak, Türkiye Barolar Birliği Avukatlık Asgari Ücret Tarifesi'nin altında olmamak üzere avukatlık sözleşmesiyle belirlenir. Harç, bilirkişi ve tebligat gibi yargılama giderleri ücretten ayrıdır.</p></details>
+      <details><summary>Davam ne kadar sürer?</summary><p>Süre; davanın türüne, görüldüğü mahkemenin iş yüküne, bilirkişi incelemesi gerekip gerekmediğine ve kanun yollarına başvurulup başvurulmadığına göre değişir. Ön değerlendirmede dosyanız için beklenen aşamaları ve tahmini süreyi paylaşırız.</p></details>
+      <details><summary>Paylaştığım bilgiler gizli kalır mı?</summary><p>Evet. Avukatlar, Avukatlık Kanunu uyarınca mesleki sır saklama yükümlülüğü altındadır. Kişisel verileriniz ayrıca 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında işlenir ve korunur.</p></details>
+      <details><summary>İstanbul dışındaki dosyaları takip ediyor musunuz?</summary><p>UYAP üzerinden yürütülebilen işlemler ve gerektiğinde yerinde takip ile İstanbul dışındaki dosyalarda da hizmet verebiliyoruz. Dosyanın durumuna göre birlikte değerlendiririz.</p></details>
+      <details><summary>Yabancı dilde görüşme yapabilir miyim?</summary><p>Evet. Türkçenin yanı sıra İngilizce, Uygurca ve Özbekçe dillerinde de görüşme yapabiliyoruz.</p></details>
+    </div>
+  </div>
+</section>
+{% endblock %}

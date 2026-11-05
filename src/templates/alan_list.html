@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "_m.html" import page_head %}
+{% block content %}
+{{ page_head("Çalışma alanları", "Çalışma Alanları", "Her alanın sayfasında; hangi konularda çalıştığımızı, dosyaların nasıl yürütüldüğünü ve bilmeniz gereken temel noktaları bulabilirsiniz.", root) }}
+<section class="block tone-stone">
+  <div class="wrap">
+    <div class="areas">
+      {% for a in alanlar %}
+      <a class="area" href="{{ root }}calisma-alanlari/{{ a.slug }}/">
+        <div><h3>{{ a.title }}</h3><span class="forum"><b>Merciler</b>{{ a.forum[:4]|join(' · ') }}</span></div>
+        <div><p>{{ a.short }}</p><ul class="topics">{% for t in a.topics[:4] %}<li>{{ t }}</li>{% endfor %}</ul><span class="area-more">Ayrıntılar ve süreç →</span></div>
+      </a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

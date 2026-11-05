@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "_m.html" import page_head %}
+{% block content %}
+{{ page_head("", s.title, s.short, root, ("Sektörler", "sektorler/")) }}
+<section class="block tone-stone">
+  <div class="wrap alan-grid">
+    <div class="prose">
+      {{ s.html|safe }}
+      <h2>Sık karşılaşılan ihtiyaçlar</h2>
+      <ul class="scope">{% for n in s.needs %}<li>{{ n }}</li>{% endfor %}</ul>
+    </div>
+    <aside class="alan-aside">
+      <div><p class="aside-label">İlgili çalışma alanları</p><ul>{% for a in s.area_objs %}<li><a href="{{ root }}calisma-alanlari/{{ a.slug }}/">{{ a.title }}</a></li>{% endfor %}</ul></div>
+      <div><p class="aside-label">Görüşme</p><p>İşletmenizin ihtiyaçlarını ön görüşmede birlikte değerlendirelim.</p><p><a class="btn solid" href="{{ root }}iletisim/">İletişime geçin</a></p><p class="aside-phone"><a href="tel:{{ site.phone }}">{{ site.phone_display }}</a></p></div>
+    </aside>
+  </div>
+</section>
+<section class="block tone-sage">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Diğer sektörler</p><h2>Sektörler</h2></div>
+    <ul class="alan-links">{% for x in sektorler if x.slug != s.slug %}<li><a href="{{ root }}sektorler/{{ x.slug }}/">{{ x.title }} <span aria-hidden="true">→</span></a></li>{% endfor %}</ul>
+  </div>
+</section>
+{% endblock %}

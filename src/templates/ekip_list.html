@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_m.html" import page_head, person_card %}
+{% block content %}
+{{ page_head("Ekibimiz", "Ekibimiz", "Dosyalarınız, büromuzun avukatları tarafından doğrudan ve birebir takip edilir.", root) }}
+<section class="block tone-stone">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Ortaklar</p><h2>Kurucu avukatlarımız</h2></div>
+    <div class="people">{% for p in ekip if p.group == 'ortak' %}{{ person_card(p, root) }}{% endfor %}</div>
+  </div>
+</section>
+<section class="block tone-sage">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Ekip</p><h2>Ekibimiz</h2></div>
+    <div class="people">{% for p in ekip if p.group != 'ortak' %}{{ person_card(p, root) }}{% endfor %}</div>
+  </div>
+</section>
+{% endblock %}

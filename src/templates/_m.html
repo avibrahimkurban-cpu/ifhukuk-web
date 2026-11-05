@@ -1,0 +1,35 @@
+{% macro portrait(p, root, sizes="(max-width:560px) 92vw, (max-width:960px) 46vw, 380px", eager=False) -%}
+{%- if p.photo -%}
+<picture class="bw"><source type="image/webp" srcset="{{ root }}assets/img/{{ p.photo }}-480.webp 480w, {{ root }}assets/img/{{ p.photo }}-800.webp 800w" sizes="{{ sizes }}"><img src="{{ root }}assets/img/{{ p.photo }}-800.jpg" srcset="{{ root }}assets/img/{{ p.photo }}-480.jpg 480w, {{ root }}assets/img/{{ p.photo }}-800.jpg 800w" sizes="{{ sizes }}" width="800" height="1000" alt="{{ p.name }}"{% if not eager %} loading="lazy"{% endif %} decoding="async"></picture>
+{%- else -%}
+<div class="bw ph" aria-hidden="true"><span>{{ p.initials }}</span></div>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro person_card(p, root) -%}
+<a class="pcard" href="{{ root }}ekibimiz/{{ p.slug }}/">
+  {{ portrait(p, root) }}
+  <span class="pc-name">{{ p.name }}</span>
+  <span class="pc-role">{{ p.role }}</span>
+  <span class="pc-sum">{{ p.summary }}</span>
+  <span class="more">Profili görüntüle →</span>
+</a>
+{%- endmacro %}
+
+{% macro sector_card(s, root) -%}
+<a class="scard" href="{{ root }}sektorler/{{ s.slug }}/">
+  <span class="sc-t">{{ s.title }}</span>
+  <span class="sc-d">{{ s.short }}</span>
+  <span class="more">Sektör sayfası →</span>
+</a>
+{%- endmacro %}
+
+{% macro page_head(eyebrow, title, lead, root, crumb=None) -%}
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">{% if crumb %}<a href="{{ root }}{{ crumb[1] }}">{{ crumb[0] }}</a>{% else %}{{ eyebrow }}{% endif %}</p>
+    <h1>{{ title }}</h1>
+    {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+  </div>
+</header>
+{%- endmacro %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "_m.html" import portrait %}
+{% block content %}
+<section class="profile tone-deep">
+  <div class="wrap profile-grid">
+    <div class="profile-photo">{{ portrait(p, root, "(max-width:860px) 92vw, 440px", True) }}</div>
+    <div class="profile-head">
+      <p class="eyebrow"><a href="{{ root }}ekibimiz/">Ekibimiz</a></p>
+      <h1>{{ p.name }}</h1>
+      <p class="profile-role">{{ p.role }}</p>
+      <dl class="profile-facts">
+        <div><dt>Baro</dt><dd>{{ p.bar }}</dd></div>
+        {% if p.languages %}<div><dt>Diller</dt><dd>{{ p.languages|join(' · ') }}</dd></div>{% endif %}
+        {% if p.email %}<div><dt>E-posta</dt><dd><a href="mailto:{{ p.email }}">{{ p.email }}</a></dd></div>{% endif %}
+      </dl>
+    </div>
+  </div>
+</section>
+<section class="block tone-stone">
+  <div class="wrap profile-body">
+    <div class="prose">
+      <h2 class="first">Özgeçmiş</h2>
+      {{ p.html|safe }}
+    </div>
+    <aside class="alan-aside">
+      <div><p class="aside-label">Eğitim</p><ul>{% for e in p.education %}<li>{{ e }}</li>{% endfor %}</ul></div>
+      {% if p.area_objs %}<div><p class="aside-label">Çalışma alanları</p><ul>{% for a in p.area_objs %}<li><a href="{{ root }}calisma-alanlari/{{ a.slug }}/">{{ a.title }}</a></li>{% endfor %}</ul></div>{% endif %}
+      <div><p class="aside-label">Görüşme</p><p>Ön görüşme için büromuzla iletişime geçebilirsiniz.</p><p><a class="btn solid" href="{{ root }}iletisim/">İletişim</a></p></div>
+    </aside>
+  </div>
+</section>
+<section class="block tone-sage">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Ekibimiz</p><h2>Diğer ekip üyeleri</h2></div>
+    <ul class="alan-links">{% for x in ekip if x.slug != p.slug %}<li><a href="{{ root }}ekibimiz/{{ x.slug }}/">{{ x.name }} <span aria-hidden="true">→</span></a></li>{% endfor %}</ul>
+  </div>
+</section>
+{% endblock %}

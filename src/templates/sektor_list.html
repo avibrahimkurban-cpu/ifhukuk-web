@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% from "_m.html" import page_head, sector_card %}
+{% block content %}
+{{ page_head("Sektörler", "Sektörler", "Müvekkillerimizin önemli bir kısmının faaliyet gösterdiği sektörler ve bu sektörlerde sık karşılaşılan hukuki ihtiyaçlar.", root) }}
+<section class="block tone-stone">
+  <div class="wrap"><div class="sector-grid">{% for s in sektorler %}{{ sector_card(s, root) }}{% endfor %}</div></div>
+</section>
+{% endblock %}

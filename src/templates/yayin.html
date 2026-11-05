@@ -3,15 +3,15 @@
 <article class="post">
   <header class="page-hero">
     <div class="wrap narrow">
-      <p class="eyebrow"><a href="{{ root }}blog.html">Blog</a>{% if p.category %} · {{ p.category }}{% endif %}</p>
+      <p class="eyebrow"><a href="{{ root }}yayinlar/">Yayınlar</a>{% if p.category %} · {{ p.category }}{% endif %}</p>
       <h1>{{ p.title }}</h1>
       <p class="post-meta"><time datetime="{{ p.date_iso }}">{{ p.date_tr }}</time>{% if p.author %} · {{ p.author }}{% endif %}</p>
     </div>
   </header>
   <div class="wrap narrow prose">
     {{ p.html|safe }}
-    <p class="post-note">Bu yazı genel bilgilendirme amaçlıdır ve hukuki görüş niteliği taşımaz. Somut durumunuz için bir avukata danışınız.</p>
-    <p><a class="btn" href="{{ root }}blog.html">← Tüm yazılar</a></p>
+    <p class="post-note">Bu yayın genel bilgilendirme amaçlıdır ve hukuki görüş niteliği taşımaz. Somut durumunuz için bir avukata danışınız.</p>
+    <p><a class="btn" href="{{ root }}yayinlar/">← Tüm yayınlar</a></p>
   </div>
 </article>
 {% endblock %}

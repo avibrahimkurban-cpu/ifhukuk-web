@@ -7,7 +7,7 @@ Gerekenler: jinja2, markdown, pyyaml
 Üretilen dosyalar deponun köküne yazılır (GitHub Pages doğrudan bunları yayınlar):
   index.html, blog.html, blog/<yazı>/index.html, calisma-alanlari/<alan>/index.html,
   kvkk.html, cerez-politikasi.html, 404.html, sitemap.xml
-Yeni blog yazısı: src/blog/<adres-adi>.md (başında title, date, category, description).
+Yeni yayın: src/yayinlar/<adres-adi>.md (başında title, date, category, description).
 """
 import datetime, pathlib, re, shutil, time
 import yaml, markdown
@@ -39,6 +39,10 @@ def write(rel, html):
     out.write_text(html, encoding="utf-8")
 
 
+def redirect(rel, target):
+    write(rel, f'<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Yönlendiriliyor… | IF PARTNERS HUKUK</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={target}"><script>location.replace("{target}")</script></head><body><p><a href="{target}">IF PARTNERS HUKUK</a></p></body></html>\n')
+
+
 def render(tpl, rel, **ctx):
     depth = rel.count("/")
     write(rel, env.get_template(tpl).render(root=("../" * depth) or "./", **common, **ctx))
@@ -61,7 +65,7 @@ alanlar.sort(key=lambda a: a.get("order", 99))
 
 # blog yazıları
 posts = []
-for f in (SRC / "blog").glob("*.md"):
+for f in (SRC / "yayinlar").glob("*.md"):
     meta, body = front(f)
     if meta.get("draft"):
         continue
@@ -70,17 +74,64 @@ for f in (SRC / "blog").glob("*.md"):
     posts.append(meta)
 posts.sort(key=lambda p: p["date_iso"], reverse=True)
 categories = sorted({p["category"] for p in posts if p.get("category")})
+alan_by = {a["slug"]: a for a in alanlar}
+
+# ekip
+ekip = []
+for f in (SRC / "ekip").glob("*.md"):
+    meta, body = front(f)
+    words = [w for w in meta["name"].replace("Stj.", "").replace("Av.", "").split() if w]
+    meta.update(slug=f.stem, html=md(body), initials=(words[0][0] + words[-1][0]).upper(),
+                area_objs=[alan_by[s] for s in meta.get("areas", []) if s in alan_by])
+    ekip.append(meta)
+ekip.sort(key=lambda p: p.get("order", 99))
+
+# sektörler
+sektorler = []
+for f in (SRC / "sektorler").glob("*.md"):
+    meta, body = front(f)
+    meta.update(slug=f.stem, html=md(body), area_objs=[alan_by[s] for s in meta.get("areas", []) if s in alan_by])
+    sektorler.append(meta)
+sektorler.sort(key=lambda s: s.get("order", 99))
+
+beklentiler = [
+    ("Dosyanıza bir avukat sahip çıkar", "Dosyanız, ilk görüşmeden sonuçlanana kadar büromuzun avukatlarından biri tarafından birebir takip edilir."),
+    ("Süreler ayrı ayrı izlenir", "Kanuni süreler, duruşma ve keşif tarihleri büro içindeki takip sistemimize işlenir ve sorumlu avukata önceden hatırlatılır."),
+    ("Her gelişmeyi yazılı olarak öğrenirsiniz", "Duruşma, tebligat, bilirkişi raporu ve karar gibi önemli gelişmeleri size yazılı olarak iletiriz."),
+    ("Kapsam ve ücret baştan bellidir", "Yapılacak işin kapsamı, ücret ve masraflar avukatlık sözleşmesiyle açıkça belirlenir."),
+    ("Kendi dilinizde görüşürsünüz", "Türkçe ve İngilizcenin yanı sıra Uygurca ve Özbekçe görüşme yapabiliyoruz."),
+]
+common["nav_alanlar"] = alanlar
 
 # eski üretimleri temizle
-for d in ("calisma-alanlari", "blog", "araclar"):
+for d in ("calisma-alanlari", "blog", "araclar", "yayinlar", "ekibimiz", "sektorler", "hakkimizda", "iletisim"):
     shutil.rmtree(ROOT / d, ignore_errors=True)
 
-render("blog.html", "blog.html", posts=posts, categories=categories, section="blog",
-       page_title="Blog", canonical="/blog.html",
-       description="IF PARTNERS HUKUK'tan ceza, ticaret, icra-iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında bilgilendirici yazılar.")
+render("yayin_list.html", "yayinlar/index.html", posts=posts, categories=categories, section="yayin",
+       page_title="Yayınlar", canonical="/yayinlar/",
+       description="IF PARTNERS HUKUK'tan ceza, ticaret, icra-iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında bilgilendirici yayınlar.")
 for p in posts:
-    render("post.html", f"blog/{p['slug']}/index.html", p=p, section="blog", og_type="article",
-           page_title=p["title"], description=p.get("description", ""), canonical=f"/blog/{p['slug']}/")
+    render("yayin.html", f"yayinlar/{p['slug']}/index.html", p=p, section="yayin", og_type="article",
+           page_title=p["title"], description=p.get("description", ""), canonical=f"/yayinlar/{p['slug']}/")
+    # eski blog adresinden yönlendirme
+    redirect(f"blog/{p['slug']}/index.html", f"../../yayinlar/{p['slug']}/")
+redirect("blog.html", "yayinlar/")
+render("alan_list.html", "calisma-alanlari/index.html", alanlar=alanlar, section="alan",
+       page_title="Çalışma Alanları", canonical="/calisma-alanlari/")
+render("ekip_list.html", "ekibimiz/index.html", ekip=ekip, section="ekip", page_title="Ekibimiz", canonical="/ekibimiz/",
+       description="IF PARTNERS HUKUK ortakları ve ekibi.")
+for p in ekip:
+    render("ekip.html", f"ekibimiz/{p['slug']}/index.html", p=p, ekip=ekip, section="ekip",
+           page_title=p["name"], description=f"{p['name']}, {p['role']}. {p['summary']}", canonical=f"/ekibimiz/{p['slug']}/")
+render("sektor_list.html", "sektorler/index.html", sektorler=sektorler, section="sektor", page_title="Sektörler", canonical="/sektorler/",
+       description="IF PARTNERS HUKUK'un birlikte çalıştığı sektörler: yabancılar ve yabancı yatırımcılar, hizmet sektörü, teknoloji şirketleri, sağlık kuruluşları.")
+for s in sektorler:
+    render("sektor.html", f"sektorler/{s['slug']}/index.html", s=s, sektorler=sektorler, section="sektor",
+           page_title=s["title"], description=s.get("description", s["short"]), canonical=f"/sektorler/{s['slug']}/")
+render("hakkimizda.html", "hakkimizda/index.html", ekip=ekip, beklentiler=beklentiler, section="hakkimizda",
+       page_title="Hakkımızda", canonical="/hakkimizda/")
+render("iletisim.html", "iletisim/index.html", section="iletisim", page_title="İletişim", canonical="/iletisim/",
+       description="IF PARTNERS HUKUK iletişim bilgileri: Uzunçayır Cad. No:43 D1 Blok D:26 Kadıköy/İstanbul, +90 538 040 82 72, info@ifhukuk.com.")
 for a in alanlar:
     render("alan.html", f"calisma-alanlari/{a['slug']}/index.html", a=a, alanlar=alanlar, section="alan",
            page_title=a["title"], description=a.get("description", a["short"]), canonical=f"/calisma-alanlari/{a['slug']}/")
@@ -101,7 +152,8 @@ for t in araclar:
     render("arac.html", f"araclar/{t['slug']}/index.html", tool_tpl=t["tpl"], slug=t["slug"], araclar=araclar,
            section="arac", page_title=t["title"], lead=t["lead"], description=t["lead"], canonical=f"/araclar/{t['slug']}/")
 
-render("home.html", "index.html", alanlar=alanlar, posts=posts, araclar=araclar, canonical="/")
+render("arac_list.html", "araclar/index.html", araclar=araclar, section="arac", page_title="Hesaplama Araçları", canonical="/araclar/")
+render("home.html", "index.html", alanlar=alanlar, posts=posts, araclar=araclar, ekip=ekip, sektorler=sektorler, beklentiler=beklentiler, canonical="/")
 render("page.html", "kvkk.html", body=(SRC / "kvkk.html").read_text(encoding="utf-8"),
        page_title="KVKK Aydınlatma Metni", canonical="/kvkk.html")
 render("page.html", "cerez-politikasi.html", body=(SRC / "cerez.html").read_text(encoding="utf-8"),
@@ -117,9 +169,11 @@ html404 = env.get_template("page.html").render(
 </div></section>''')
 write("404.html", html404)
 
-urls = ["/", "/blog.html"] + [f"/calisma-alanlari/{a['slug']}/" for a in alanlar] + \
-       [f"/blog/{p['slug']}/" for p in posts] + [f"/araclar/{t['slug']}/" for t in araclar] + ["/kvkk.html", "/cerez-politikasi.html"]
+urls = ["/", "/hakkimizda/", "/calisma-alanlari/", "/sektorler/", "/ekibimiz/", "/yayinlar/", "/araclar/", "/iletisim/"] + \
+       [f"/calisma-alanlari/{a['slug']}/" for a in alanlar] + [f"/sektorler/{s['slug']}/" for s in sektorler] + \
+       [f"/ekibimiz/{p['slug']}/" for p in ekip] + [f"/yayinlar/{p['slug']}/" for p in posts] + \
+       [f"/araclar/{t['slug']}/" for t in araclar] + ["/kvkk.html", "/cerez-politikasi.html"]
 write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
       + "".join(f"<url><loc>{site['url']}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 
-print(f"Tamam: {len(alanlar)} çalışma alanı, {len(posts)} blog yazısı.")
+print(f"Tamam: {len(alanlar)} çalışma alanı, {len(sektorler)} sektör, {len(ekip)} kişi, {len(posts)} yayın.")

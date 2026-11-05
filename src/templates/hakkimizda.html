@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% from "_m.html" import page_head, person_card %}
+{% block content %}
+{{ page_head("Hakkımızda", "Hakkımızda", "IF PARTNERS HUKUK, Kadıköy'de faaliyet gösteren; bireylere ve şirketlere dava takibi ve hukuki danışmanlık hizmeti veren bir avukatlık bürosudur.", root) }}
+
+<section class="block tone-stone intro">
+  <div class="wrap intro-grid">
+    <p class="eyebrow">Büromuz</p>
+    <p class="statement">Her dosyayı, müvekkilin durumunu dinleyerek ve hukuki seçenekleri açıkça ortaya koyarak ele alıyoruz.</p>
+    <div class="intro-body prose">
+      <p>IF PARTNERS HUKUK, Kadıköy'de faaliyet gösteren bir avukatlık bürosudur. Dava ve takip süreçlerinde süreleri yakından izliyor, müvekkillerimizi dosyalarındaki her önemli gelişmeden haberdar ediyoruz. Uyuşmazlık doğmadan önce sözleşme ve danışmanlık desteğiyle riskleri azaltmaya, uyuşmazlık doğduğunda ise dosyayı baştan sona titizlikle yürütmeye çalışıyoruz.</p>
+      <p>Büromuz; ceza, şirketler ve ticaret, icra ve iflas, gayrimenkul, yabancılar, sigorta ve sağlık hukuku alanlarında çalışır. Müvekkillerimizin önemli bir kısmı yabancılar ve yabancı yatırımcılar, hizmet sektöründeki işletmeler, teknoloji şirketleri ve sağlık kuruluşlarıdır.</p>
+      <p>Görüşmelerimizi Türkçe ve İngilizcenin yanı sıra Uygurca ve Özbekçe de yapabiliyoruz. Bu sayede yabancı müvekkillerimiz, dosyalarındaki her adımı kendi dillerinde takip edebilir.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block tone-sage">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">İlkelerimiz</p><h2>Yaklaşımımız</h2><p>Çalışma biçimimizi belirleyen üç ilke.</p></div>
+    <ul class="principles-xl">
+      <li><b>Açık iletişim</b><span>Dosyanın durumu, riskleri ve olası sonuçları anlaşılır bir dille paylaşılır.</span></li>
+      <li><b>Süre takibi</b><span>Kanuni süreler ve duruşma tarihleri büro içinde ayrı ayrı izlenir.</span></li>
+      <li><b>Gizlilik</b><span>Müvekkil bilgileri avukatlık meslek kuralları ve KVKK kapsamında korunur.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block tone-deep expect">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Bizimle çalışırken</p><h2>Dosyanızda sizi neler bekler</h2><p>Her müvekkilimizle aynı çalışma düzenini uygularız.</p></div>
+    <ul class="expect-list">
+      {% for e in beklentiler %}<li><b>{{ e[0] }}</b><span>{{ e[1] }}</span></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="block tone-forest">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Çalışma biçimi</p><h2>Bir dosya bizde nasıl ilerler</h2><p>İlk görüşmeden dosyanın sonuçlanmasına kadar her aşamada ne olacağını önceden bilirsiniz.</p></div>
+    <ol class="steps">
+      <li><b>Ön görüşme</b><span>Durumunuzu ve elinizdeki belgeleri yüz yüze ya da çevrim içi görüşmede dinleriz.</span></li>
+      <li><b>Hukuki değerlendirme</b><span>Seçenekleri, süreleri, masrafları ve riskleri yazılı olarak paylaşırız.</span></li>
+      <li><b>Vekalet ve sözleşme</b><span>Kapsam ve ücret avukatlık sözleşmesiyle açıkça belirlenir.</span></li>
+      <li><b>Takip ve bilgilendirme</b><span>Duruşma, tebligat ve karar gibi her önemli gelişmeyi size iletiriz.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block tone-stone">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Ekibimiz</p><h2>Ortaklarımız ve ekibimiz</h2><p><a href="{{ root }}ekibimiz/">Tüm ekip →</a></p></div>
+    <div class="people">{% for p in ekip %}{{ person_card(p, root) }}{% endfor %}</div>
+  </div>
+</section>
+
+<section class="block tone-sage">
+  <div class="wrap about-grid">
+    <div><p class="eyebrow">Meslek kuralları</p><h2 class="sec-title">Gizlilik ve meslek ilkeleri</h2></div>
+    <div class="body prose">
+      <p>Avukatlar, Avukatlık Kanunu uyarınca mesleki sır saklama yükümlülüğü altındadır. Müvekkillerimizin bize ilettiği bilgi ve belgeler bu yükümlülük kapsamında korunur; kişisel veriler ayrıca 6698 sayılı Kişisel Verilerin Korunması Kanunu'na uygun olarak işlenir.</p>
+      <p>Avukatlık ücreti; işin niteliği, kapsamı ve gerektirdiği emek dikkate alınarak, Türkiye Barolar Birliği Avukatlık Asgari Ücret Tarifesi'nin altında olmamak üzere avukatlık sözleşmesiyle belirlenir.</p>
+      <p>Bu internet sitesi, Türkiye Barolar Birliği Meslek Kuralları ve reklam yasağına ilişkin düzenlemeler gözetilerek hazırlanmıştır. <a href="{{ root }}kvkk.html">KVKK Aydınlatma Metni →</a></p>
+    </div>
+  </div>
+</section>
+{% endblock %}
