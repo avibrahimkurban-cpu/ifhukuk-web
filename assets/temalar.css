@@ -1,0 +1,95 @@
+/* Tasarım seçenekleri — site.css'in üzerine yazar. Gövde sınıfı: t1…t5 */
+
+/* ortak: yeni logolar */
+.lg{display:inline-flex;align-items:center;gap:12px;color:currentColor;line-height:1}
+.lg-txt{display:flex;flex-direction:column;gap:4px}
+.lg-txt b{font-weight:500;letter-spacing:.2em;font-size:.86rem}
+.lg-txt small{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7}
+.lg-mono .lg-mark{display:grid;place-items:center;width:40px;height:40px;border:1px solid currentColor;font-family:var(--serif);font-size:1.25rem;letter-spacing:.04em}
+.lg-imza i{font-family:var(--serif);font-size:2.3rem;font-style:italic;letter-spacing:-.02em;padding-right:12px;border-right:1px solid var(--brass);color:var(--brass);line-height:.9}
+.lg-imza .lg-txt b{font-family:var(--serif);font-size:1.15rem;letter-spacing:.04em;font-weight:400}
+.foot-brand .lg{color:var(--on-dark);margin-bottom:18px}
+@media (max-width:1100px){.lg-txt b{font-size:.78rem}.lg-mono .lg-mark{width:34px;height:34px;font-size:1.05rem}.lg-imza i{font-size:1.9rem}}
+
+/* ---------- 1 · Gece ve Şampanya ---------- */
+.t1{--deep:#111111;--forest:#1A1A1A;--foot:#0B0B0B;--stone:#F6F4EF;--sage:#ECE8E0;--card:#FFFFFF;--ink:#141414;--ink-2:#3B3A37;--muted:#6B6862;--line:#DCD6CB;--accent:#8C6B3E;--brass:#CDB78A;--on-dark:#F4F1EA;--on-dark-2:#ADA79C;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,sans-serif}
+.t1 .hero-xl h1,.t1 .statement,.t1 .sec-head h2,.t1 .page-hero h1,.t1 .profile-head h1{font-weight:400}
+.t1 .sec-head h2{font-size:clamp(2.1rem,4vw,3.2rem)}
+.t1 .eyebrow{letter-spacing:.3em}
+.t1 .btn{letter-spacing:.06em;text-transform:uppercase;font-size:.8rem;padding:16px 26px}
+
+/* ---------- 2 · Bordo ve Fildişi ---------- */
+.t2{--deep:#2A1418;--forest:#351A1F;--foot:#1E0E11;--stone:#F8F5EF;--sage:#EFE9DF;--card:#FFFDF9;--ink:#1E1A18;--ink-2:#40383A;--muted:#6E6466;--line:#DED4C8;--accent:#7A1E2C;--brass:#D4B483;--on-dark:#F7F0E8;--on-dark-2:#C2AFA9;--on-dark-line:rgba(247,240,232,.16);
+  --serif:"Playfair Display",Georgia,serif;--sans:"Source Sans 3",system-ui,sans-serif}
+.t2 body,.t2{font-size:17.5px}
+.t2 .hero-xl h1{font-weight:400;letter-spacing:-.02em}
+.t2 .sec-head{border-top:1px solid var(--line);padding-top:28px}
+.t2 .tone-deep .sec-head,.t2 .tone-forest .sec-head{border-top-color:var(--on-dark-line)}
+.t2 .post-card{border-top:0;border-left:3px solid var(--accent)}
+
+/* ---------- 3 · Grafit ve Bronz (beyaz üst bant) ---------- */
+.t3{--deep:#2E2F31;--forest:#3A3B3D;--foot:#1F2022;--stone:#F2F1EE;--sage:#E6E4DF;--card:#FAFAF8;--ink:#1B1C1D;--ink-2:#3D3F41;--muted:#6A6C6E;--line:#D4D2CC;--accent:#9A6B3F;--brass:#C39A6B;--on-dark:#F3F2EF;--on-dark-2:#B4B3AE;
+  --serif:"EB Garamond",Georgia,serif;--sans:"Manrope",system-ui,sans-serif}
+.t3::before{background:#fff}
+.t3 .site-head{background:#fff;color:var(--ink);border-bottom-color:var(--line)}
+.t3 .nav a{color:var(--ink-2)}
+.t3 .nav a:hover,.t3 .nav a[aria-current]{color:var(--ink)}
+.t3 .nav a[aria-current]{box-shadow:inset 0 -1px 0 var(--accent)}
+.t3 .nav .cta{border-color:var(--ink);color:var(--ink)}
+.t3 .nav .cta:hover{background:var(--ink);color:#fff}
+.t3 .menu-btn span{background:var(--ink)}
+@media (max-width:1100px){.t3 .nav{background:#fff;border-bottom-color:var(--line)}.t3 .nav a{color:var(--ink);border-bottom-color:var(--line)}.t3 .nav a[aria-current],.t3 .nav .cta{color:var(--accent)}}
+.t3 .hero-xl h1{font-weight:400}
+.t3 .hero::after{content:"";width:38vw;max-width:520px;height:100%;top:0;transform:none;right:0;background:linear-gradient(90deg,transparent,rgba(195,154,107,.08));font-size:0}
+.t3 .btn{border-radius:2px}
+.t3 .sector-grid{gap:16px;background:transparent;border:0}
+.t3 .scard{border:1px solid var(--line)}
+
+/* ---------- 4 · Monokrom (beyaz açılış, yeni monogram logo) ---------- */
+.t4{--deep:#0F0F0F;--forest:#1C1C1C;--foot:#0A0A0A;--stone:#FFFFFF;--sage:#F3F3F1;--card:#FFFFFF;--ink:#0F0F0F;--ink-2:#333333;--muted:#666666;--line:#DDDDDD;--accent:#9B1B30;--brass:#D9D4CA;--on-dark:#F5F5F5;--on-dark-2:#A8A8A8;--on-dark-line:rgba(255,255,255,.14);
+  --serif:"Bodoni Moda",Didot,Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
+.t4::before{background:#fff}
+.t4 .site-head{background:#fff;color:var(--ink);border-bottom:1px solid var(--ink)}
+.t4 .head-row{height:84px}
+.t4 .nav a{color:var(--ink-2);text-transform:uppercase;font-size:.76rem;letter-spacing:.14em}
+.t4 .nav a:hover,.t4 .nav a[aria-current]{color:var(--ink)}
+.t4 .nav a[aria-current]{box-shadow:inset 0 -1px 0 var(--accent)}
+.t4 .nav .cta{border-color:var(--ink);color:#fff;background:var(--ink)}
+.t4 .nav .cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.t4 .menu-btn span{background:var(--ink)}
+@media (max-width:1100px){.t4 .nav{top:calc(84px + env(safe-area-inset-top,0px));background:#fff;border-bottom-color:var(--ink)}.t4 .nav a{color:var(--ink);border-bottom-color:var(--line);font-size:.9rem}.t4 .nav .cta{background:none;color:var(--accent)}}
+.t4 .hero{background:#fff;color:var(--ink);border-bottom:1px solid var(--ink)}
+.t4 .hero::after{color:rgba(0,0,0,.035)}
+.t4 .hero h1{color:var(--ink);font-weight:400;max-width:15ch;font-size:clamp(2.8rem,8vw,6.8rem)}
+.t4 .hero h1 em{color:var(--accent)}
+.t4 .hero .eyebrow{color:var(--accent)}
+.t4 .hero .btn{border-color:var(--ink);color:var(--ink)}
+.t4 .hero .btn.solid{background:var(--ink);border-color:var(--ink);color:#fff}
+.t4 .hero .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+.t4 .hero .facts{border-top-color:var(--ink)}
+.t4 .hero .facts dt{color:var(--muted)}
+.t4 .hero .facts dd{color:var(--ink)}
+.t4 .tone-deep .eyebrow,.t4 .tone-forest .eyebrow,.t4 .page-hero .eyebrow,.t4 .profile-role{color:#E0596E!important}
+.t4 .expect-list li::before{color:#E0596E}
+.t4 .sec-head h2{font-weight:400;font-size:clamp(2.2rem,4.4vw,3.6rem)}
+.t4 .areas,.t4 .tool-links,.t4 .alan-links{border-top-width:2px}
+.t4 .post-card{border:1px solid var(--ink);border-top:4px solid var(--ink)}
+.t4 .tone-sage .post-card,.t4 .scard{background:#fff}
+.t4 .pc-role{color:var(--ink)}
+
+/* ---------- 5 · Mürdüm ve Pirinç (ortalanmış açılış, yeni imza logo) ---------- */
+.t5{--deep:#241A22;--forest:#2E222B;--foot:#1A1319;--stone:#F6F3EE;--sage:#ECE6DE;--card:#FFFCF8;--ink:#1F1A1D;--ink-2:#43393F;--muted:#6F6469;--line:#DCD2C9;--accent:#6E3B5C;--brass:#C9A66B;--on-dark:#F6F0EA;--on-dark-2:#BCAEB4;--on-dark-line:rgba(246,240,234,.15);
+  --serif:"DM Serif Display",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif}
+.t5 .hero .wrap{text-align:center}
+.t5 .hero h1{margin-inline:auto;font-weight:400;max-width:16ch}
+.t5 .hero .eyebrow{display:inline-block}
+.t5 .hero-actions{justify-content:center}
+.t5 .hero .facts{text-align:left}
+.t5 .hero::after{display:none}
+.t5 .btn{border-radius:999px}
+.t5 .nav .cta{border-radius:999px}
+.t5 .sec-head h2,.t5 .statement,.t5 .page-hero h1,.t5 .profile-head h1{font-weight:400}
+.t5 .post-card{border-top:0;border-radius:6px;box-shadow:0 1px 0 var(--line)}
+.t5 .scard{border-radius:0}
+.t5 .bw{border-radius:4px}

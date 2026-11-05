@@ -1,0 +1,47 @@
+# Tasarım seçenekleri (önizleme). Kullanım: TEMA=1 python3 build.py
+1:
+  cls: t1
+  ad: Gece ve Şampanya
+  ozet: Derin siyah zemin, şampanya altını vurgular, klasik ve zarif bir serif.
+  fonts: family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500;600
+  font_serif: Cormorant Garamond
+  font_sans: Inter
+  renkler: ["#111111", "#CDB78A", "#F6F4EF", "#8C6B3E"]
+  logo: mevcut
+2:
+  cls: t2
+  ad: Bordo ve Fildişi
+  ozet: Çok koyu bordo bantlar, fildişi zemin ve güçlü kontrastlı bir başlık yazısı.
+  fonts: family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@400;500;600
+  font_serif: Playfair Display
+  font_sans: Source Sans 3
+  renkler: ["#2A1418", "#7A1E2C", "#F8F5EF", "#D4B483"]
+  logo: mevcut
+3:
+  cls: t3
+  ad: Grafit ve Bronz
+  ozet: Beyaz üst bant, grafit açılış ve bronz vurgular; ferah ve kurumsal.
+  fonts: family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600
+  font_serif: EB Garamond
+  font_sans: Manrope
+  renkler: ["#2E2F31", "#9A6B3F", "#F2F1EE", "#FFFFFF"]
+  logo: mevcut
+  logo_head: assets/img/logo-siyah.png
+4:
+  cls: t4
+  ad: Monokrom
+  ozet: Siyah-beyaz, dergi düzeninde büyük başlıklar ve tek bir kırmızı vurgu. Yeni monogram logo.
+  fonts: family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=IBM+Plex+Sans:wght@400;500;600
+  font_serif: Bodoni Moda
+  font_sans: IBM Plex Sans
+  renkler: ["#0F0F0F", "#FFFFFF", "#9B1B30", "#F3F3F1"]
+  logo: monogram
+5:
+  cls: t5
+  ad: Mürdüm ve Pirinç
+  ozet: Koyu mürdüm tonları, pirinç sarısı ayrıntılar ve ortalanmış açılış. Yeni imza logo.
+  fonts: family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600
+  font_serif: DM Serif Display
+  font_sans: DM Sans
+  renkler: ["#241A22", "#C9A66B", "#F6F3EE", "#6E3B5C"]
+  logo: imza

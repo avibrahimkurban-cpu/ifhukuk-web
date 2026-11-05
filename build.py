@@ -19,7 +19,10 @@ AYLAR = "Ocak Şubat Mart Nisan Mayıs Haziran Temmuz Ağustos Eylül Ekim Kası
 
 site = yaml.safe_load((SRC / "site.yml").read_text(encoding="utf-8"))
 env = Environment(loader=FileSystemLoader(SRC / "templates"), autoescape=select_autoescape(["html"]))
-common = dict(site=site, year=datetime.date.today().year, build_id=int(time.time()))
+import os
+TEMALAR = yaml.safe_load((SRC / "temalar.yml").read_text(encoding="utf-8"))
+theme = TEMALAR.get(int(os.environ["TEMA"])) if os.environ.get("TEMA") else None
+common = dict(site=site, theme=theme, year=datetime.date.today().year, build_id=int(time.time()))
 
 
 def front(path):

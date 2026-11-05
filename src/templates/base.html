@@ -6,6 +6,15 @@
   {%- endif %}
 </span>
 {%- endmacro -%}
+{%- macro logo(img, lazy=False) -%}
+{%- if theme and theme.logo == 'monogram' -%}
+<span class="lg lg-mono"><span class="lg-mark">IF</span><span class="lg-txt"><b>IF PARTNERS</b><small>Hukuk Bürosu</small></span></span>
+{%- elif theme and theme.logo == 'imza' -%}
+<span class="lg lg-imza"><i>IF</i><span class="lg-txt"><b>Partners</b><small>Avukatlık Bürosu</small></span></span>
+{%- else -%}
+<img src="{{ root }}{{ img }}" alt="{{ site.title }}" width="311" height="22"{% if lazy %} loading="lazy"{% endif %}>
+{%- endif -%}
+{%- endmacro -%}
 <!doctype html>
 <html lang="tr">
 <head>
@@ -24,15 +33,16 @@
 <link rel="icon" href="{{ root }}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ theme.fonts if theme else 'family=Public+Sans:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400' }}&display=swap">
 <link rel="stylesheet" href="{{ root }}assets/site.css?v={{ build_id }}">
+{% if theme %}<link rel="stylesheet" href="{{ root }}assets/temalar.css?v={{ build_id }}">{% endif %}
 {% block head %}{% endblock %}
 </head>
-<body>
+<body{% if theme %} class="{{ theme.cls }}"{% endif %}>
 <a class="skip" href="#icerik">İçeriğe geç</a>
 <header class="site-head">
   <div class="wrap head-row">
-    <a class="brand" href="{{ root }}" aria-label="{{ site.title }} ana sayfa"><img src="{{ root }}{{ site.logo_light }}" alt="{{ site.title }}" width="311" height="22"></a>
+    <a class="brand" href="{{ root }}" aria-label="{{ site.title }} ana sayfa">{{ logo(theme.logo_head if theme and theme.logo_head else site.logo_light) }}</a>
     <button class="menu-btn" aria-label="Menü" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav" aria-label="Ana menü">
       {%- for key, href, label in [('hakkimizda','hakkimizda/','Hakkımızda'),('alan','calisma-alanlari/','Çalışma Alanları'),('sektor','sektorler/','Sektörler'),('ekip','ekibimiz/','Ekibimiz'),('yayin','yayinlar/','Yayınlar'),('arac','araclar/','Araçlar')] %}
@@ -51,7 +61,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img src="{{ root }}{{ site.logo_light }}" alt="{{ site.title }}" width="311" height="22" loading="lazy">
+        {{ logo(site.logo_light, True) }}
         <p>Kadıköy, İstanbul'da faaliyet gösteren avukatlık bürosu.</p>
         {{ icons('in-foot') }}
       </div>
