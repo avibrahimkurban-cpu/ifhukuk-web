@@ -21,7 +21,8 @@ site = yaml.safe_load((SRC / "site.yml").read_text(encoding="utf-8"))
 env = Environment(loader=FileSystemLoader(SRC / "templates"), autoescape=select_autoescape(["html"]))
 import os
 TEMALAR = yaml.safe_load((SRC / "temalar.yml").read_text(encoding="utf-8"))
-theme = TEMALAR.get(int(os.environ["TEMA"])) if os.environ.get("TEMA") else None
+# Yayındaki tasarım: 1 (Gece ve Şampanya). Başka bir seçeneği denemek için: TEMA=2 python3 build.py
+theme = TEMALAR.get(int(os.environ.get("TEMA", "1")))
 common = dict(site=site, theme=theme, year=datetime.date.today().year, build_id=int(time.time()))
 
 
