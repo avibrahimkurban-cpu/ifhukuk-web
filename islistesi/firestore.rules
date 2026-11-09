@@ -1,0 +1,15 @@
+rules_version = '2';
+// IF PARTNERS HUKUK iş listesi: yalnızca bu üç hesap okuyup yazabilir.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function ekip() {
+      return request.auth != null && request.auth.token.email in [
+        'ibrahimkurban@ifhukuk.com',
+        'firattalhaozdemir@ifhukuk.com',
+        'harunenesmaden@ifhukuk.com'
+      ];
+    }
+    match /tasks/{id}  { allow read, write: if ekip(); }
+    match /people/{id} { allow read, write: if ekip(); }
+  }
+}

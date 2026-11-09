@@ -39,6 +39,7 @@ header.top .r{display:flex;gap:10px;align-items:center;font-size:.88rem;color:va
 .login form{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--ink);padding:32px 28px;width:min(400px,100%);display:flex;flex-direction:column;gap:14px}
 .login h1{font-family:var(--serif);font-weight:500;font-size:1.8rem;margin:0}
 .login p{margin:0;color:var(--muted);font-size:.92rem}
+.whoami{font-weight:600;color:var(--on-dark)}
 .f{display:flex;flex-direction:column;gap:5px;min-width:0}
 .f label{font-size:.75rem;font-weight:600;color:var(--ink-2);letter-spacing:.02em}
 .f input,.f select,.f textarea{border:1px solid #BDB6AB;background:#fff;padding:9px 11px;border-radius:0;width:100%;min-width:0;min-height:42px}
@@ -102,13 +103,14 @@ ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;ga
 <body>
 <header class="top"><div class="wrap">
   <a href="../"><img src="../assets/img/logo-beyaz.png" alt="IF PARTNERS HUKUK" width="255" height="18"></a>
-  <div class="r" id="topR" hidden><span id="today"></span><button class="btn dark sm" id="teamBtn">Ekip</button><button class="btn dark sm" id="outBtn">Çıkış</button></div>
+  <div class="r" id="topR" hidden><span id="today"></span><span id="whoami" class="whoami"></span><button class="btn dark sm" id="teamBtn">Ekip</button><button class="btn dark sm" id="outBtn">Çıkış</button></div>
 </div></header>
 
 <section class="login" id="loginView" hidden>
   <form id="loginForm" autocomplete="on">
     <h1>İş Listesi</h1>
-    <p>IF PARTNERS HUKUK ekibine özeldir. Büro şifresiyle giriş yapın.</p>
+    <p>IF PARTNERS HUKUK ekibine özeldir. Kendi kullanıcı adınız ve şifrenizle giriş yapın.</p>
+    <div class="f"><label for="user">Kullanıcı adı veya e-posta</label><input id="user" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required></div>
     <div class="f"><label for="pw">Şifre</label><input id="pw" type="password" autocomplete="current-password" required></div>
     <div class="err" id="loginErr" role="alert"></div>
     <button class="btn primary" type="submit" id="loginBtn">Giriş yap</button>
@@ -130,6 +132,7 @@ ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;ga
 <script>
 (function(){
 var CFG=window.ISLISTE_CONFIG||null;
+var USERS=(CFG&&CFG.users)||{};
 var $=function(s){return document.querySelector(s)};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
 var pad=function(n){return String(n).padStart(2,'0')};
@@ -153,7 +156,9 @@ auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(function(){});
 var unsub=[];
 auth.onAuthStateChanged(function(u){
   unsub.forEach(function(f){f()});unsub=[];
-  if(!u){$('#loginView').hidden=false;$('#appView').hidden=true;$('#topR').hidden=true;setTimeout(function(){$('#pw').focus()},50);return}
+  if(!u){$('#loginView').hidden=false;$('#appView').hidden=true;$('#topR').hidden=true;setTimeout(function(){($('#user').value?$('#pw'):$('#user')).focus()},50);return}
+  var who=Object.keys(USERS).filter(function(k){return USERS[k].email===String(u.email).toLowerCase()})[0];
+  $('#whoami').textContent=who?USERS[who].name:u.email;
   $('#loginView').hidden=true;$('#appView').hidden=false;$('#topR').hidden=false;
   $('#today').textContent=new Date().toLocaleDateString('tr-TR',{day:'numeric',month:'long',weekday:'long'});
   unsub.push(db.collection('tasks').onSnapshot(function(s){S.tasks=new Map();s.forEach(function(d){S.tasks.set(d.id,Object.assign({id:d.id},d.data()))});S.ready=true;render()},fail));
@@ -163,8 +168,10 @@ auth.onAuthStateChanged(function(u){
 function fail(e){toast('Bağlantı hatası: '+(e&&e.message||e))}
 $('#loginForm').addEventListener('submit',function(ev){
   ev.preventDefault();var b=$('#loginBtn');b.disabled=true;$('#loginErr').textContent='';
-  auth.signInWithEmailAndPassword(CFG.email,$('#pw').value).catch(function(e){
-    $('#loginErr').textContent=(e&&/too-many/.test(e.code))?'Çok fazla deneme yapıldı. Biraz sonra tekrar deneyin.':'Şifre hatalı.';
+  var name=$('#user').value.trim().toLocaleLowerCase('tr'),email=name.indexOf('@')>0?name:(USERS[name]&&USERS[name].email);
+  if(!email){$('#loginErr').textContent='Bu kullanıcı adı tanımlı değil.';b.disabled=false;return}
+  auth.signInWithEmailAndPassword(email,$('#pw').value).catch(function(e){
+    $('#loginErr').textContent=(e&&/too-many/.test(e.code))?'Çok fazla deneme yapıldı. Biraz sonra tekrar deneyin.':'Kullanıcı adı veya şifre hatalı.';
   }).finally(function(){b.disabled=false});
 });
 $('#outBtn').addEventListener('click',function(){auth.signOut()});
